@@ -14,11 +14,12 @@ class Web
     {
         $main = new SampleWebController();
         $authController = new AuthController();
+
         Route::Add('/', [$main, 'home']);
-        Route::Add('/exemple', [$main, 'exemple']);
-        Route::Add('/about', function () {
-            return Template::render('views/global/about.php');
-        });
+        Route::Add('/films', [$main, 'exemple']);
+        Route::Add('/film/{id}', [$main, 'exemple']);
+        Route::Add('/gallery', [$main, 'exemple']);
+        Route::Add('/actors}', [$main, 'exemple']);
 
         if (SessionHelpers::isLogin()) {
             Route::Add('/logout', [$authController, 'logout']);
