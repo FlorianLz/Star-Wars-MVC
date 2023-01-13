@@ -98,10 +98,6 @@ CREATE TABLE IF NOT EXISTS `actors`
 (
     255
 ) NOT NULL,
-    `played_character` VARCHAR
-(
-    255
-) NOT NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME NOT NULL
     ) ENGINE = InnoDB;

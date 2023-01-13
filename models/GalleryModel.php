@@ -23,4 +23,15 @@ class GalleryModel extends SQL
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, Gallery::class);
     }
+
+    public function addGallery(Gallery $gallery)
+    {
+        $query = "INSERT INTO gallery (name, url) VALUES (:name, :url)";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "name" => $gallery->getName(),
+            "url" => $gallery->getUrl()
+        ));
+        $gallery->setId(SQL::getPdo()->lastInsertId());
+    }
 }

@@ -29,6 +29,7 @@ class Web
 
         if (SessionHelpers::isLogin()) {
             Route::Add('/logout', [$authController, 'logout']);
+            Route::Add('/admin/films/add', [$filmController, 'addFilmPage']);
         } else {
             Route::Add('/login', [$authController, 'login']);
             Route::Add('/register', [$authController, 'register']);

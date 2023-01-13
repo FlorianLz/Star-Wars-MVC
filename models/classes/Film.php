@@ -233,4 +233,14 @@ class Film
     {
         $this->gallery = $gallery;
     }
+
+    public function addGallery($gallerie): void
+    {
+        $this->filmModel->addGallerySingle($this->id, $gallerie);
+    }
+
+    public function addActor($actor): void
+    {
+        $this->filmModel->addActor($this->id, $actor);
+    }
 }
