@@ -14,3 +14,11 @@ foreach ($film->getActors() as $actor) {
     <?php
 }
 ?>
+
+<h2>Gallery</h2>
+<?php
+foreach ($film->getGallery() as $gallery) {
+    ?>
+    <img src="<?= $gallery->getUrl() ?>" alt="<?= $gallery->getName() ?>">
+    <?php
+}

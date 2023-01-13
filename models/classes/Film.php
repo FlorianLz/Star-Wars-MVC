@@ -18,6 +18,7 @@ class Film
     private string $creationDate;
     private string $updateDate;
     private array $actors;
+    private array $gallery;
 
     public function __construct()
     {
@@ -202,7 +203,7 @@ class Film
     }
 
     /**
-     * @return array
+     * @return Actor[]
      */
     public function getActors(): array
     {
@@ -210,10 +211,26 @@ class Film
     }
 
     /**
-     * @param array $actors
+     * @param Actor[] $actors
      */
     public function setActors(array $actors): void
     {
         $this->actors = $actors;
+    }
+
+    /**
+     * @return Gallery[]
+     */
+    public function getGallery(): array
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param Gallery[] $gallery
+     */
+    public function setGallery(array $gallery): void
+    {
+        $this->gallery = $gallery;
     }
 }

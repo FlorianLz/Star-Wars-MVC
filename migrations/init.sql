@@ -125,11 +125,24 @@ ALTER TABLE `films_actors`
 CREATE TABLE `wlfy3366_starwarsmvc`.`gallery`
 (
     `id`         INT(11) NOT NULL AUTO_INCREMENT,
+    `name`       VARCHAR(255) NOT NULL,
     `url`        VARCHAR(255) NOT NULL,
     `created_at` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME     NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+
+CREATE TABLE `wlfy3366_starwarsmvc`.`films_gallery`
+(
+    `id_film`    INT(11) NOT NULL,
+    `id_gallery`   INT(11) NOT NULL,
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME NOT NULL
+) ENGINE = InnoDB;
+ALTER TABLE `films_gallery`
+    ADD CONSTRAINT `FK_FILMGALLERY` FOREIGN KEY (`id_film`) REFERENCES `films` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `films_gallery`
+    ADD CONSTRAINT `FK_GALLERYFILM` FOREIGN KEY (`id_gallery`) REFERENCES `gallery` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `wlfy3366_starwarsmvc`.`comments`
 (

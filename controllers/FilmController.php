@@ -28,7 +28,9 @@ class FilmController extends WebController
     {
         $film = $this->filmModel->getFilmById($id);
         $actors = $this->filmModel->getActorsByFilmId($id);
+        $gallery = $this->filmModel->getGalleryByFilmId($id);
         $film->setActors($actors);
+        $film->setGallery($gallery);
         return Template::render(
             "views/single/singleFilm.php",
             array( "film" => $film)

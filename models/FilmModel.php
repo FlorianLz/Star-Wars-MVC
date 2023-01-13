@@ -4,6 +4,7 @@ namespace models;
 use models\base\SQL;
 use models\classes\Actor;
 use models\classes\Film;
+use models\classes\Gallery;
 
 class FilmModel extends SQL
 {
@@ -43,5 +44,15 @@ class FilmModel extends SQL
             "id" => $id
         ));
         return $stmt->fetchAll(\PDO::FETCH_CLASS, Actor::class);
+    }
+
+    public function getGalleryByFilmId($id)
+    {
+        $query = "SELECT gallery.* FROM `films` JOIN films_gallery ON films_gallery.id_film = films.id JOIN gallery ON gallery.id = films_gallery.id_gallery WHERE films.id = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Gallery::class);
     }
 }
