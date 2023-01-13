@@ -3,6 +3,7 @@
 namespace routes;
 
 use controllers\AuthController;
+use controllers\FilmController;
 use controllers\SampleWebController;
 use routes\base\Route;
 use utils\SessionHelpers;
@@ -14,10 +15,11 @@ class Web
     {
         $main = new SampleWebController();
         $authController = new AuthController();
+        $filmController = new FilmController();
 
         Route::Add('/', [$main, 'home']);
-        Route::Add('/films', [$main, 'exemple']);
-        Route::Add('/film/{id}', [$main, 'exemple']);
+        Route::Add('/films', [$filmController, 'showFilms']);
+        Route::Add('/film/{id}', [$filmController, 'showFilm']);
         Route::Add('/gallery', [$main, 'exemple']);
         Route::Add('/actors}', [$main, 'exemple']);
 
