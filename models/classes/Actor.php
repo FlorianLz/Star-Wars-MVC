@@ -10,6 +10,7 @@ class Actor
     private string $played_character;
     private string $creationDate;
     private string $updateDate;
+    private string | array $films_presence;
 
     /**
      * @return int
@@ -105,5 +106,21 @@ class Actor
     public function setUpdateDate(string $updateDate): void
     {
         $this->updateDate = $updateDate;
+    }
+
+    /**
+     * @return string | array
+     */
+    public function getFilmsPresence(): string | array
+    {
+        return $this->films_presence;
+    }
+
+    /**
+     * @param string | array $films_presence
+     */
+    public function setFilmsPresence(string | array $films_presence): void
+    {
+        $this->films_presence = $films_presence;
     }
 }
