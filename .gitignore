@@ -144,3 +144,4 @@ Temporary Items
 configs.php
 public/images/*
 node_modules
+public/style/*

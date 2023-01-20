@@ -1,1 +1,12 @@
+/* On importe les styles communs */
+@import "./common/normalize";
+@import "./common/variables";
+@import "./common/mixins";
+
+/* On importe les styles généraux */
+@import "./partials/general";
+
+/* On importe les styles personnalisés */
+@import "./partials/header";
+@import "./partials/footer";
 @import "./partials/homepage";
