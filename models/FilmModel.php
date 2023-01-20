@@ -38,7 +38,7 @@ class FilmModel extends SQL
 
     public function getActorsByFilmId($id)
     {
-        $query = "SELECT actors.name,actors.picture,films_actors.played_character FROM `films` JOIN films_actors ON films_actors.id_film = films.id JOIN actors ON films_actors.id_actor = actors.id WHERE films.id = :id";
+        $query = "SELECT actors.id,actors.name,actors.picture,films_actors.played_character as played_character FROM `films` JOIN films_actors ON films_actors.id_film = films.id JOIN actors ON films_actors.id_actor = actors.id WHERE films.id = :id";
         $stmt = SQL::getPdo()->prepare($query);
         $stmt->execute(array(
             "id" => $id
@@ -87,6 +87,27 @@ class FilmModel extends SQL
         }
     }
 
+    public function removeAllActorsByFilmId($id)
+    {
+        $query = "DELETE FROM films_actors WHERE id_film = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+    }
+
+    public function insertActorsForFilm($tabActors){
+        foreach ($tabActors as $actor) {
+            $query = "INSERT INTO films_actors (id_film, id_actor,played_character, updated_at) VALUES (:id_film, :id_actor, :played_character, NOW())";
+            $stmt = SQL::getPdo()->prepare($query);
+            $stmt->execute(array(
+                "id_film" => $actor['id_film'],
+                "id_actor" => $actor['id_actor'],
+                "played_character" => $actor['played_character']
+            ));
+        }
+    }
+
     public function addGallery(bool|string $id, array $getGallery)
     {
         foreach ($getGallery as $gallery) {
@@ -117,6 +138,51 @@ class FilmModel extends SQL
             "id_film" => $id,
             "id_actor" => $actor->getId(),
             "played_character" => $actor->getPlayedCharacter()
+        ));
+    }
+
+    public function updateFilm(Film $film)
+    {
+        $query = "UPDATE films SET name = :name, resume = :resume, synopsis = :synopsis, release_date = :release_date, trailer = :trailer, cover = :cover, banner = :banner, updated_at = :updated_at WHERE id = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "name" => $film->getName(),
+            "resume" => $film->getResume(),
+            "synopsis" => $film->getSynopsis(),
+            "release_date" => $film->getReleaseDate(),
+            "trailer" => $film->getTrailer(),
+            "cover" => $film->getCover(),
+            "id" => $film->getId(),
+            "banner" => $film->getBanner(),
+            "updated_at" => $film->getUpdateDate()
+        ));
+    }
+
+    public function deleteFilm($POST)
+    {
+        $id = $POST['id'];
+        //delete all actors
+        $query = "DELETE FROM films_actors WHERE id_film = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        //delete all gallery
+        $query = "DELETE FROM films_gallery WHERE id_film = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        //delete all comments
+        $query = "DELETE FROM comments WHERE id_film = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        $query = "DELETE FROM films WHERE id = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
         ));
     }
 }

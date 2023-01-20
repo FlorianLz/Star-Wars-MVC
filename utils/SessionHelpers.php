@@ -39,4 +39,13 @@ class SessionHelpers
     {
         return isset($_SESSION['LOGIN']);
     }
+
+    static function isInBackOffice(): bool
+    {
+        if(strpos($_SERVER['REQUEST_URI'], '/admin') !== false) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

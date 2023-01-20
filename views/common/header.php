@@ -23,6 +23,9 @@
                 echo '<li><a href="/login">Login</a></li>';
                 echo '<li><a href="/register">Register</a></li>';
             }
+            if(SessionHelpers::isInBackOffice()) {
+                echo '<li><a href="/admin">Admin</a></li>';
+            }
             ?>
         </ul>
     </div>

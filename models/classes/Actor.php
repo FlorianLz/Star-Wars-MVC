@@ -7,10 +7,10 @@ class Actor
     private int $id;
     private string $name;
     private string $picture;
-    private string $played_character;
+    private string | null $played_character;
     private string $creationDate;
     private string $updateDate;
-    private string | array $films_presence;
+    private string | array | null  $films_presence;
 
     /**
      * @return int
@@ -61,17 +61,17 @@ class Actor
     }
 
     /**
-     * @return string
+     * @return string | null
      */
-    public function getPlayedCharacter(): string
+    public function getPlayedCharacter(): string | null
     {
         return $this->played_character;
     }
 
     /**
-     * @param string $playedCharacter
+     * @param $playedCharacter
      */
-    public function setPlayedCharacter(string $playedCharacter): void
+    public function setPlayedCharacter($playedCharacter): void
     {
         $this->played_character = $playedCharacter;
     }
@@ -109,18 +109,22 @@ class Actor
     }
 
     /**
-     * @return string | array
+     * @return string | array| null
      */
-    public function getFilmsPresence(): string | array
+    public function getFilmsPresence(): string | array| null
     {
         return $this->films_presence;
     }
 
     /**
-     * @param string | array $films_presence
+     * @param string | array | null $films_presence
      */
-    public function setFilmsPresence(string | array $films_presence): void
+    public function setFilmsPresence(string | array | null $films_presence): void
     {
-        $this->films_presence = $films_presence;
+        if(gettype($films_presence) == null) {
+            $this->films_presence = [];
+        } else {
+            $this->films_presence = $films_presence;
+        }
     }
 }

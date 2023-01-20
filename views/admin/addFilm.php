@@ -12,6 +12,8 @@
     <input type="text" id="trailer" name="trailer" placeholder="Lien du trailer...">
     <label for="cover">Cover image</label>
     <input type="file" id="cover" name="cover">
+    <label for="cover">Banner image</label>
+    <input type="file" id="banner" name="banner">
     <label for="gallery">Gallery images</label>
     <input type="file" id="gallery" name="gallery[]" multiple>
     <label for="actors">Acteurs :</label>

@@ -18,12 +18,30 @@ class ActorModel extends SQL
      */
     public function getAll(): array
     {
-        $query = "SELECT actors.name,GROUP_CONCAT(DISTINCT films_actors.played_character SEPARATOR ';') as played_character,GROUP_CONCAT(films.name SEPARATOR ';') as films_presence FROM `films` JOIN films_actors ON films_actors.id_film = films.id JOIN actors ON actors.id = films_actors.id_actor GROUP BY actors.name";
+        $query = "SELECT actors.id as id,actors.name,GROUP_CONCAT(DISTINCT films_actors.played_character SEPARATOR ';') as played_character,GROUP_CONCAT(films.name SEPARATOR ';') as films_presence FROM `films` JOIN films_actors ON films_actors.id_film = films.id JOIN actors ON actors.id = films_actors.id_actor GROUP BY actors.name";
         $stmt = SQL::getPdo()->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(\PDO::FETCH_CLASS, Actor::class);
         foreach ($result as $actor) {
             $actor->setFilmsPresence(explode(';', $actor->getFilmsPresence()));
+        }
+        return $result;
+    }
+
+    public function getAllActorsAdmin(): array
+    {
+        $query = "SELECT actors.id as id, actors.name, GROUP_CONCAT(DISTINCT films_actors.played_character SEPARATOR ';') as played_character, GROUP_CONCAT(films.name SEPARATOR ';') as films_presence 
+        FROM `actors` 
+        LEFT JOIN films_actors ON films_actors.id_actor = actors.id 
+        LEFT JOIN films ON films.id = films_actors.id_film  
+        GROUP BY actors.id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(\PDO::FETCH_CLASS, Actor::class);
+        foreach ($result as $actor) {
+            if($actor->getFilmsPresence() != null){
+                $actor->setFilmsPresence(explode(';', $actor->getFilmsPresence()));
+            }
         }
         return $result;
     }
@@ -48,12 +66,28 @@ class ActorModel extends SQL
 
     public function getActorById($string)
     {
-        var_dump($string);
         $query = "SELECT * FROM actors WHERE id = :id";
         $stmt = SQL::getPdo()->prepare($query);
         $stmt->execute(array(
             "id" => $string
         ));
         return $stmt->fetchObject(Actor::class);
+    }
+
+    public function delete($POST)
+    {
+        $id = $POST['id'];
+        //delete from films_actors where id_actor = :id
+        $query = "DELETE FROM films_actors WHERE id_actor = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        $query = "DELETE FROM actors WHERE id = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+
     }
 }
