@@ -39,6 +39,7 @@ class Web
             Route::Add('/admin/actors', [$actorController, 'adminActors']);
             Route::Add('/admin/actors/add', [$actorController, 'addActorPage']);
             Route::Add('/admin/actors/delete/{id}', [$actorController, 'deleteActor']);
+            Route::Add('/admin/gallery/delete/{filmId}/{imageId}', [$galleryController, 'deleteGallery']);
         } else {
             Route::Add('/login', [$authController, 'login']);
             Route::Add('/register', [$authController, 'register']);

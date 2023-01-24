@@ -111,7 +111,7 @@ class FilmModel extends SQL
     public function addGallery(bool|string $id, array $getGallery)
     {
         foreach ($getGallery as $gallery) {
-            $query = "INSERT INTO films_gallery (id_film, id_gallery, played_character) VALUES (:id_film, :id_gallery)";
+            $query = "INSERT INTO films_gallery (id_film, id_gallery) VALUES (:id_film, :id_gallery)";
             $stmt = SQL::getPdo()->prepare($query);
             $stmt->execute(array(
                 "id_film" => $id,
@@ -158,9 +158,8 @@ class FilmModel extends SQL
         ));
     }
 
-    public function deleteFilm($POST)
+    public function deleteFilm($id)
     {
-        $id = $POST['id'];
         //delete all actors
         $query = "DELETE FROM films_actors WHERE id_film = :id";
         $stmt = SQL::getPdo()->prepare($query);
@@ -184,5 +183,6 @@ class FilmModel extends SQL
         $stmt->execute(array(
             "id" => $id
         ));
+        return $id;
     }
 }

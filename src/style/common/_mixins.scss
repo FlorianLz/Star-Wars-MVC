@@ -3,18 +3,29 @@
     @content;
   }
 }
+
 @mixin sm() {
   @media screen and (max-width: $sm) {
     @content;
   }
 }
+
 @mixin md() {
   @media screen and (max-width: $md) {
     @content;
   }
 }
+
 @mixin lg() {
   @media screen and (max-width: $lg) {
     @content;
   }
+}
+
+@mixin flex($direction: row, $justify: center, $align: center, $wrap: wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
 }

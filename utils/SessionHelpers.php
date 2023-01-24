@@ -19,6 +19,7 @@ class SessionHelpers
     static function login(mixed $equipe): void
     {
         $_SESSION['LOGIN'] = $equipe;
+        $_SESSION['LOGIN']['role'] == 'admin';
     }
 
     static function logout(): void
@@ -47,5 +48,10 @@ class SessionHelpers
         } else {
             return false;
         }
+    }
+
+    static function isAdmin(): bool
+    {
+        return true;
     }
 }

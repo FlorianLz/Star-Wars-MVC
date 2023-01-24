@@ -1,5 +1,6 @@
 /* On importe les styles communs */
 @import "./common/normalize";
+@import "./common/fonts";
 @import "./common/variables";
 @import "./common/mixins";
 
@@ -10,3 +11,4 @@
 @import "./partials/header";
 @import "./partials/footer";
 @import "./partials/homepage";
+@import "./partials/films";

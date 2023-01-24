@@ -191,10 +191,11 @@ class FilmController extends WebController
             $film->setActors($actors);
             $film->setGallery($gallery);
             $allActors = $this->actorModel->getAllActors();
+            $allGallery = $this->galleryModel->getAllGalleryByFilmId($id);
             //var_dump($allActors);
             return Template::render(
                 "views/admin/updateFilm.php",
-                array("film" => $film, "allActors" => $allActors, "allActorsForFilm" => $actors)
+                array("film" => $film, "allActors" => $allActors, "allActorsForFilm" => $actors, "allGallery" => $allGallery)
             );
         }
     }
@@ -202,7 +203,7 @@ class FilmController extends WebController
     private function updateFilm($id, $params, $files)
     {
 
-        for ($i=0; $i < $params['nbActors']; $i++) {
+        for ($i=0; $i < $params['nbActors']-1; $i++) {
             $params['tabActors'][$i]['id_film'] = $id;
             $params['tabActors'][$i]['id_actor'] = $params['actor'.$i+1];
             $params['tabActors'][$i]['played_character'] = $params['actor'. $i+1 .'character'];
@@ -277,15 +278,68 @@ class FilmController extends WebController
                 $film->setBanner('public/images/banners/default.jpg');
             }
         }
+
+        $gallery = $files['gallery'];
+        if($gallery['name'][0] != ""){
+            for ($i = 0; $i < count($gallery['name']); $i++) {
+                $params['tabGallery'][$i]['id_film'] = $id;
+                $galleryName = $gallery['name'][$i];
+                $galleryTmpName = $gallery['tmp_name'][$i];
+                $gallerySize = $gallery['size'][$i];
+                $galleryError = $gallery['error'][$i];
+                $galleryExt = explode('.', $galleryName);
+                $galleryActualExt = strtolower(end($galleryExt));
+                $allowed = array('jpg', 'jpeg', 'png');
+                if (in_array($galleryActualExt, $allowed)) {
+                    if ($galleryError === 0) {
+                        if ($gallerySize < 1000000) {
+                            $galleryNameNew = uniqid('', true) . "." . $galleryActualExt;
+                            $galleryDestination = 'public/images/gallery/' . $galleryNameNew;
+                            move_uploaded_file($galleryTmpName, $galleryDestination);
+                            $gall = new Gallery();
+                            $gall->setUrl($galleryDestination);
+                            $gall->setName($galleryNameNew);
+                            $this->galleryModel->addGallery($gall);
+                            $film->addGallery($gall);
+                        } else {
+                            $gall = new Gallery();
+                            $gall->setName('Photo par défaut');
+                            $gall->setUrl('public/images/gallery/default.jpg');
+                            $this->galleryModel->addGallery($gall);
+                            $film->addGallery($gall);
+                        }
+                    } else {
+                        $gall = new Gallery();
+                        $gall->setName('Photo par défaut');
+                        $gall->setUrl('public/images/gallery/default.jpg');
+                        $this->galleryModel->addGallery($gall);
+                        $film->addGallery($gall);
+                    }
+                } else {
+                    $gall = new Gallery();
+                    $gall->setUrl('public/images/gallery/default.jpg');
+                    $gall->setName('Photo par défaut');
+                    $this->galleryModel->addGallery($gall);
+                    $film->addGallery($gall);
+                }
+            }
+        }
+
+        //Gestion de la suppression des photos de la galerie
+        $removeImages = $params['removeImages'];
+        if($removeImages != null){
+            $split = explode(",", $removeImages);
+            for($i = 0; $i < count($split); $i++){
+                $this->galleryModel->deleteGallery($film->getId(),$split[$i]);
+            }
+        }
+
         $this->filmModel->updateFilm($film);
         header("Location: /admin/films/update/" . $film->getId());
     }
 
     public function deleteFilm($id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->filmModel->deleteFilm($_POST);
-        }
-        header("Location: /admin/films");
+        $this->filmModel->deleteFilm($id);
     }
 }

@@ -20,4 +20,9 @@ class GalleryController extends WebController
         return Template::render("views/global/gallery.php", array("galleries" => $galleries));
     }
 
+    public function deleteGallery($filmId,$imageId)
+    {
+        $this->galleryModel->deleteGallery($filmId,$imageId);
+    }
+
 }

@@ -22,7 +22,7 @@ class AdminController extends WebController
     function adminFilms(): string
     {
         $films = $this->filmModel->getAll();
-        return Template::render("views/admin/films.php", [
+        return Template::render("views/list/filmsList.php", [
             "films" => $films
         ]);
     }
