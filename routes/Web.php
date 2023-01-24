@@ -26,12 +26,12 @@ class Web
         Route::Add('/', [$main, 'home']);
         Route::Add('/films', [$filmController, 'showFilms']);
         Route::Add('/film/{id}', [$filmController, 'showFilm']);
-        Route::Add('/gallery', [$galleryController, 'gallery']);
+        Route::Add('/galerie', [$galleryController, 'gallery']);
         Route::Add('/actors', [$actorController, 'actors']);
 
         if (SessionHelpers::isLogin()) {
             Route::Add('/logout', [$authController, 'logout']);
-            Route::Add('/admin', [$adminController, 'adminIndex']);
+            Route::Add('/admin', [$adminController, 'adminFilms']);
             Route::Add('/admin/films', [$adminController, 'adminFilms']);
             Route::Add('/admin/films/add', [$filmController, 'addFilmPage']);
             Route::Add('/admin/films/update/{id}', [$filmController, 'updateFilmPage']);
@@ -39,7 +39,9 @@ class Web
             Route::Add('/admin/actors', [$actorController, 'adminActors']);
             Route::Add('/admin/actors/add', [$actorController, 'addActorPage']);
             Route::Add('/admin/actors/delete/{id}', [$actorController, 'deleteActor']);
-            Route::Add('/admin/gallery/delete/{filmId}/{imageId}', [$galleryController, 'deleteGallery']);
+            Route::Add('/admin/galerie', [$galleryController, 'adminGalleryPage']);
+            Route::Add('/admin/galerie/delete/{id}', [$galleryController, 'deleteGalleryById']);
+
         } else {
             Route::Add('/login', [$authController, 'login']);
             Route::Add('/register', [$authController, 'register']);

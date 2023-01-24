@@ -55,4 +55,19 @@ class GalleryModel extends SQL
             "id_gallery" => $imageId
         ));
     }
+
+    public function deleteGalleryById($id)
+    {
+        $query = "DELETE FROM films_gallery WHERE id_gallery = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+
+        $query = "DELETE FROM gallery WHERE id = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+    }
 }

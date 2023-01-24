@@ -86,16 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 removeImages.value = removeImages.value + idImage + ',';
                 console.log(removeImages.value);
                 document.querySelector('div.gallery-line[data-id="' + idImage + '"]').remove();
-                /*fetch('/admin/gallery/delete/' + idFilm + '/' + idImage, {method: 'GET'})
-                    .then(response => {
-                        document.querySelector('div.gallery-line[data-id="' + idImage + '"]').remove();
-                    })
-                    .catch(error => {
-                        console.log('Une erreur est survenue lors de la suppression: ' + error)
-                    });*/
             });
         });
-
-
+    }
+    if(document.getElementById('galleryAdmin')){
+        document.querySelectorAll('.gallery-delete').forEach((item)=>{
+            item.addEventListener('click',function(e){
+                console.log(this.getAttribute('data-id'));
+                let idImage = this.getAttribute('data-id');
+                fetch('/admin/galerie/delete/' + idImage, {method: 'GET'})
+                    .then(response => {
+                        document.querySelector('div.gallery-line[data-id="' + idImage + '"]').remove();
+                    });
+            });
+        });
     }
 });

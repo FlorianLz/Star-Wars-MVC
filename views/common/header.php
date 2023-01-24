@@ -53,17 +53,27 @@ if (SessionHelpers::isInBackOffice()) { ?>
                 <?php
 
                 if (SessionHelpers::isLogin()) {
-                    echo '<li><a href="/me">Mon compte</a></li>';
                     echo ' <li><a href="/logout">Logout</a></li>';
                 } else {
                     echo '<li><a href="/login">Login</a></li>';
                     echo '<li><a href="/register">Register</a></li>';
                 }
-                echo '<li><a href="/admin">Back-office</a></li>';
+                if(SessionHelpers::isAdmin()){
+                    echo '<li><a href="/admin">Back-office</a></li>';
+                }
                 ?>
             </ul>
         </nav>
     </header>
-<?php } ?>
-<div id="content">
+<?php }
+if(SessionHelpers::isInBackOffice()){
+
+?>
+<div id="content-bo">
+<?php }else{
+    ?>
+    <div id="content"">
+    <?php
+} ?>
+
 
