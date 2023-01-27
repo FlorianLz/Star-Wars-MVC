@@ -5,8 +5,10 @@ namespace controllers;
 use controllers\base\WebController;
 use models\ActorModel;
 use models\classes\Actor;
+use models\classes\Comment;
 use models\classes\Film;
 use models\classes\Gallery;
+use models\CommentModel;
 use models\FilmModel;
 use models\GalleryModel;
 use utils\Template;
@@ -16,12 +18,14 @@ class FilmController extends WebController
     private FilmModel $filmModel;
     private ActorModel $actorModel;
     private GalleryModel $galleryModel;
+    private $commentModel;
 
     public function __construct()
     {
         $this->filmModel = new FilmModel();
         $this->actorModel = new ActorModel();
         $this->galleryModel = new GalleryModel();
+        $this->commentModel = new CommentModel();
     }
 
     public function showFilms()
@@ -38,8 +42,13 @@ class FilmController extends WebController
         $film = $this->filmModel->getFilmById($id);
         $actors = $this->filmModel->getActorsByFilmId($id);
         $gallery = $this->filmModel->getGalleryByFilmId($id);
+        $comments = $this->commentModel->getCommentsByFilmId($id);
+        foreach ($comments as $comment) {
+            $comment->setAuthorInfos($this->commentModel->getUserInfosByCommentId($comment->getId()));
+        }
         $film->setActors($actors);
         $film->setGallery($gallery);
+        $film->setComments($comments);
         return Template::render(
             "views/single/singleFilm.php",
             array("film" => $film)
@@ -341,5 +350,16 @@ class FilmController extends WebController
     public function deleteFilm($id)
     {
         $this->filmModel->deleteFilm($id);
+    }
+
+    public function addComment(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $comment = new Comment();
+            $comment->setAuthor($_SESSION['LOGIN']['id']);
+            $comment->setFilmId($_POST['idFilm']);
+            $comment->setComment($_POST['comment']);
+            $this->commentModel->addComment($comment);
+            header("Location: /film/" . $_POST['idFilm']);
+        }
     }
 }
