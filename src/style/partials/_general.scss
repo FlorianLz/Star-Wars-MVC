@@ -6,6 +6,10 @@
   font-family: Roboto, sans-serif;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -32,3 +36,58 @@ img {
   margin-left: 200px;
   padding: 30px;
 }
+
+.title{
+  color: $white;
+  font-family: "Star Jedi", serif;
+  font-weight: 400;
+  font-size: 7rem;
+  line-height: 1;
+  margin: 0 auto;
+  text-align: center;
+  @media (max-width: 991px) {
+      font-size: calc(7rem * 0.7);
+  }
+  @media (max-width: 767px) {
+    font-size: 2.8rem;
+  }
+}
+.subtitle{
+  font-family: 'Star Jedi Hollow';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 6rem;
+  line-height: 1;
+  color: $black;
+
+  @media (max-width: 991px) {
+    font-size: calc(6rem * 0.7);
+  }
+  @media (max-width: 767px) {
+    font-size: 2.4rem;
+  }
+  &--variant{
+    font-family: 'Star Jedi';
+    font-size: 6rem;
+    line-height: 1;
+    @media (max-width: 991px) {
+      font-size: calc(6rem * 0.7);
+    }
+    @media (max-width: 767px) {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+//genere code pour import les fonts dossier public/fonts
+
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('../../public/fonts/Starjedi.ttf') format('truetype');
+}
+ @font-face {
+   font-family: 'Star Jedi Hollow';
+    src: url('../../public/fonts/Starjhol.ttf') format('truetype');
+ }
+
+

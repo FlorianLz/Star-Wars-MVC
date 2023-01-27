@@ -1,0 +1,153 @@
+.banner {
+  &--content {
+    position: relative;
+    width: 100%;
+    height: 500px;
+
+    @media (max-width: 767px) {
+      height: 250px;
+    }
+
+    .title {
+      height: 100%;
+      @include flex(center, center, center);
+    }
+  }
+
+  &--image {
+    position: absolute;
+    top: 0;
+    height: 500px;
+    width: calc(100% + 40px);
+    max-width: calc(100% + 40px);
+    object-fit: cover;
+    margin: 0 -20px;
+    z-index: -1;
+
+    @media (max-width: 767px) {
+      height: 250px;
+    }
+  }
+}
+
+.resume {
+  &--content {
+    padding: 50px 0 25px;
+
+    @media (max-width: 991px) {
+      padding: 25px 0;
+    }
+  }
+
+  .subtitle {
+    text-align: center;
+  }
+
+  &--text {
+    font-family: Roboto, sans-serif;
+    font-size: 2rem;
+    line-height: 1;
+    margin-top: 20px;
+
+    @media (max-width: 991px) {
+      font-size: calc(2rem * 0.7);
+    }
+    @media (max-width: 767px) {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.trailer {
+  &--content {
+    @include flex(row, flex-start, center, nowrap);
+    padding: 25px 0;
+
+    @media (max-width: 767px) {
+      padding: 12.5px 0;
+      @include flex(column, flex-start, center, nowrap);
+    }
+
+    .subtitle--variant {
+      width: auto;
+      writing-mode: sideways-lr;
+
+      @media (max-width: 767px) {
+        writing-mode: horizontal-tb;
+        margin-bottom: 20px;
+      }
+    }
+
+    &_info {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &--iframe {
+    height: auto;
+    min-height: 650px;
+    width: calc(100% - 50px);
+    margin: 0 20px;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      min-height: 300px;
+    }
+  }
+}
+
+.actor {
+  &--content {
+    padding: 25px 0;
+    @media (max-width: 767px) {
+      padding: 12.5px 0;
+    }
+  }
+
+  .subtitle {
+    text-align: center;
+  }
+
+  &--list {
+    @include flex(row, flex-start, center, nowrap);
+    gap: 40px;
+    margin-top: 20px;
+    overflow-y: hidden;
+    padding-bottom: 30px;
+  }
+
+  &--item {
+    width: 200px;
+    @include flex(column, flex-start, flex-start);
+
+    .actor--image {
+      height: 250px;
+      object-fit: cover;
+      max-width: max-content;
+    }
+
+    .actor--name {
+      font-family: 'lato', sans-serif;
+      font-weight: 600;
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-top: 10px;
+      @media (max-width: 767px) {
+        font-size: 1.4rem;
+      }
+    }
+
+    .actor--played {
+      font-family: 'lato', sans-serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: $gray;
+      margin-top: 5px;
+      @media (max-width: 767px) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
