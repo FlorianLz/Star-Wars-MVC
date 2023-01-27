@@ -72,7 +72,7 @@ if(SessionHelpers::isInBackOffice()){
 <div id="content-bo">
 <?php }else{
     ?>
-    <div id="content"">
+    <div id="content">
     <?php
 } ?>
 

@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: Roboto, sans-serif;
+  transition: 0.3s;
 }
 
 html {
@@ -35,6 +36,23 @@ img {
   width: calc(100% - 200px);
   margin-left: 200px;
   padding: 30px;
+}
+
+.generic-cta {
+  font-family: 'Star Jedi Hollow';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1;
+  color: $black;
+  background: $white;
+  border: 1px solid $black;
+  padding: 10px 40px;
+  &:hover {
+    background: $black;
+    color: $white;
+    font-family: 'Star Jedi';
+  }
 }
 
 .title{
