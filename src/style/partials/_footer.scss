@@ -1,0 +1,57 @@
+.footer{
+  &--content{
+    background: url("../../../public/images/deathOfStar.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+    padding: 0 0 0 200px;
+    height: 300px;
+    @include flex(column, center, flex-start);
+    position: relative;
+
+    @media (max-width: 991px) {
+      padding: 0 0 0 100px;
+    }
+    @media (max-width: 767px) {
+      padding: 0 0 0 20px;
+    }
+    .easter--egg{
+      display: none;
+
+      @media (min-width: 1200px) {
+        display: block;
+        position: absolute;
+        top: 50px;
+        right: 340px;
+      }
+    }
+  }
+  &--link {
+    @include flex(column, center, flex-start);
+    gap: 10px;
+    &_item{
+      font-family: 'Star Jedi';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 2.9rem;
+      line-height: 1;
+      color: $white;
+      @media (max-width: 991px) {
+        font-size: 2.4rem;
+      }
+      @media (max-width: 767px) {
+        font-size: 2rem;
+      }
+    }
+  }
+  &--text{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1;
+    color: $white;
+    margin-top: 20px;
+  }
+}
