@@ -1,4 +1,16 @@
 .banner {
+  &.default {
+    .banner {
+      &--content {
+        height: 250px;
+      }
+
+      &--image {
+        height: 250px;
+      }
+    }
+  }
+
   &--content {
     position: relative;
     width: 100%;
@@ -201,7 +213,8 @@
         }
       }
     }
-    .comment--text{
+
+    .comment--text {
       font-size: 1.6rem;
     }
 
@@ -230,6 +243,7 @@
       }
     }
   }
+
   .comment--form {
     width: 100%;
     @include flex(column, flex-start, center, nowrap);
@@ -237,14 +251,16 @@
     margin-top: 20px;
     overflow-y: hidden;
     padding-bottom: 30px;
-    form{
+
+    form {
       width: 100%;
       @include flex(column, flex-start, center, nowrap);
       gap: 20px;
       margin-top: 20px;
       overflow-y: hidden;
       padding-bottom: 30px;
-      textarea{
+
+      textarea {
         width: 100%;
         height: 150px;
         border: 1px solid $gray;
@@ -256,7 +272,8 @@
           font-size: 1.4rem;
         }
       }
-      input{
+
+      input {
         width: max-content;
         height: 50px;
         border: none;
