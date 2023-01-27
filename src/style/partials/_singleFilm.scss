@@ -70,7 +70,7 @@
 
     .subtitle--variant {
       width: auto;
-      writing-mode: sideways-lr;
+      writing-mode: vertical-rl;
 
       @media (max-width: 767px) {
         writing-mode: horizontal-tb;
