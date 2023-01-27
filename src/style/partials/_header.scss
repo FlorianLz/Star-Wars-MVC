@@ -1,6 +1,7 @@
 header{
   background-color: $black;
   height: 55px;
+  font-family: "Star Jedi", serif;
   nav{
     height: 100%;
     @include flex(row, space-between, center);
