@@ -11,6 +11,7 @@ class Comment
     private int $filmId;
     private int $author;
     private User $authorInfos;
+    private string $createdAt;
 
     /**
      * @return int
@@ -96,4 +97,21 @@ class Comment
     {
         $this->filmId = $filmId;
     }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param string $createdAt
+     */
+    public function setCreatedAt(string $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
 }

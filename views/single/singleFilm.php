@@ -59,19 +59,32 @@
     </div>
 </section>
 
-<h2>Commentaires</h2>
-<?php
-foreach ($film->getComments() as $comment) {
-    ?>
-    <p><?= $comment->getComment() ?></p>
-    <p><?= $comment->getAuthorInfos()->getPrenom() ?></p>
-    <?php
-} ?>
-
-
-<form action="/admin/films/addComment" method="POST">
-    <textarea type="text" name="comment" placeholder="Commentaire..."></textarea>
-    <input type="hidden" name="idFilm" value="<?= $film->getId() ?>">
-    <input type="submit" value="Ajouter un commentaire">
-</form>
+<section class="comment">
+    <div class="container">
+        <div class="comment--content">
+            <h2 class="subtitle">Commentaires</h2>
+            <div class="comment--form">
+                <form action="/admin/films/addComment" method="POST">
+                    <textarea type="text" name="comment" placeholder="Commentaire..."></textarea>
+                    <input type="hidden" name="idFilm" value="<?= $film->getId() ?>">
+                    <input type="submit" value="Ajouter un commentaire">
+                </form>
+            </div>
+            <div class="comment--list">
+                <?php foreach ($film->getComments() as $comment) { ?>
+                    <div class="comment--item">
+                        <div class="comment--item--left">
+                            <div class="comment--picture"><?= ucfirst(substr($comment->getAuthorInfos()->getPrenom(),0,1)) ?></div>
+                            <p class="comment--author"><?= $comment->getAuthorInfos()->getPrenom() ?></p>
+                        </div>
+                        <div class="comment--item--right">
+                            <p class="comment--date">Publié le <?= (new DateTime($comment->created_at))->format('d/m/Y') ?></p>
+                            <p class="comment--text"><?= $comment->getComment() ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</section>
 

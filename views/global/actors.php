@@ -1,6 +1,7 @@
 <h1>Actors</h1>
 <?php
 foreach ($actors as $actor) {
+    var_dump($actor);
     echo "<h3>" . $actor->getName() . " -> " . $actor->getPlayedCharacter() . "</h3>";
     echo "<ul>";
     if($actor->getFilmsPresence() != null){
