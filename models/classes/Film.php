@@ -19,6 +19,7 @@ class Film
     private string $updateDate;
     private array $actors;
     private array $gallery;
+    private array $comments;
 
     public function __construct()
     {
@@ -242,5 +243,21 @@ class Film
     public function addActor($actor): void
     {
         $this->filmModel->addActor($this->id, $actor);
+    }
+
+    /**
+     * @return array
+     */
+    public function getComments(): array
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param array $comments
+     */
+    public function setComments(array $comments): void
+    {
+        $this->comments = $comments;
     }
 }

@@ -143,16 +143,26 @@ ALTER TABLE `films_gallery`
 CREATE TABLE `wlfy3366_starwarsmvc`.`comments`
 (
     `id`         INT(11) NOT NULL,
-    `id_film`    INT(11) NOT NULL,
-    `id_user`    INT(11) NOT NULL,
     `comment`    TEXT     NOT NULL,
+    `id_author`     INT(11) NOT NULL,
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME NOT NULL,
+        PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+ALTER TABLE `comments`
+    ADD CONSTRAINT `FK_AUTHORCOMMENTS` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+CREATE TABLE `wlfy3366_starwarsmvc`.`films_comments`
+(
+    `id_film`    INT(11) NOT NULL,
+    `id_comment`   INT(11) NOT NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME NOT NULL
 ) ENGINE = InnoDB;
-ALTER TABLE `comments`
-    ADD CONSTRAINT `FK_FILMCOMMENT` FOREIGN KEY (`id_film`) REFERENCES `films` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE `comments`
-    ADD CONSTRAINT `FK_USERCOMMENT` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `films_comments`
+    ADD CONSTRAINT `FK_FILMCOMMENTS` FOREIGN KEY (`id_film`) REFERENCES `films` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `films_comments`
+    ADD CONSTRAINT `FK_COMMENTSFILM` FOREIGN KEY (`id_comment`) REFERENCES `comments` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 COMMIT;
 
