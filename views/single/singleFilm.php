@@ -58,3 +58,20 @@
         </div>
     </div>
 </section>
+
+<h2>Commentaires</h2>
+<?php
+foreach ($film->getComments() as $comment) {
+    ?>
+    <p><?= $comment->getComment() ?></p>
+    <p><?= $comment->getAuthorInfos()->getPrenom() ?></p>
+    <?php
+} ?>
+
+
+<form action="/admin/films/addComment" method="POST">
+    <textarea type="text" name="comment" placeholder="Commentaire..."></textarea>
+    <input type="hidden" name="idFilm" value="<?= $film->getId() ?>">
+    <input type="submit" value="Ajouter un commentaire">
+</form>
+
