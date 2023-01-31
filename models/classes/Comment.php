@@ -12,6 +12,7 @@ class Comment
     private int $author;
     private User $authorInfos;
     private string $createdAt;
+    private mixed $user_name;
 
     /**
      * @return int
@@ -112,6 +113,16 @@ class Comment
     public function setCreatedAt(string $createdAt): void
     {
         $this->createdAt = $createdAt;
+    }
+
+    public function setUserName(mixed $prenom)
+    {
+        $this->user_name = $prenom;
+    }
+
+    public function getUserName(): mixed
+    {
+        return $this->user_name;
     }
 
 }

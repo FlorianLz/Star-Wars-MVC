@@ -64,21 +64,25 @@
         <div class="comment--content">
             <h2 class="subtitle">Commentaires</h2>
             <div class="comment--form">
-                <form action="/admin/films/addComment" method="POST">
-                    <textarea type="text" name="comment" placeholder="Commentaire..."></textarea>
+                <form action="/films/addComment" method="POST">
+                    <?php if(\utils\SessionHelpers::isLogin() == false){ ?>
+                        <input type="text" name="author" placeholder="Nom d'utilisateur" required>
+                    <?php } ?>
+                    <textarea type="text" name="comment" placeholder="Commentaire..." required></textarea>
                     <input type="hidden" name="idFilm" value="<?= $film->getId() ?>">
                     <input type="submit" value="Ajouter un commentaire">
                 </form>
             </div>
             <div class="comment--list">
-                <?php foreach ($film->getComments() as $comment) { ?>
+                <?php foreach ($film->getComments() as $comment) {?>
                     <div class="comment--item">
                         <div class="comment--item--left">
-                            <div class="comment--picture"><?= ucfirst(substr($comment->getAuthorInfos()->getPrenom(),0,1)) ?></div>
-                            <p class="comment--author"><?= $comment->getAuthorInfos()->getPrenom() ?></p>
+                            <div class="comment--picture"><?= ucfirst(substr($comment->getUserName(),0,1)) ?></div>
+                            <p class="comment--author"><?= $comment->getUserName() ?></p>
                         </div>
                         <div class="comment--item--right">
-                            <p class="comment--date">Publié le <?= (new DateTime($comment->created_at))->format('d/m/Y') ?></p>
+                            <?= $comment->created_at ?>
+                            <p class="comment--date">Publié le <?= (new DateTime($comment->created_at))->format('d/m/Y') ?> à <?= (new DateTime($comment->created_at))->format('H:m') ?></p>
                             <p class="comment--text"><?= $comment->getComment() ?></p>
                         </div>
                     </div>

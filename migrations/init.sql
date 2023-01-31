@@ -144,13 +144,11 @@ CREATE TABLE `wlfy3366_starwarsmvc`.`comments`
 (
     `id`         INT(11) NOT NULL,
     `comment`    TEXT     NOT NULL,
-    `id_author`     INT(11) NOT NULL,
+    `user_name`     VARCHAR(255) NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME NOT NULL,
         PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
-ALTER TABLE `comments`
-    ADD CONSTRAINT `FK_AUTHORCOMMENTS` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 CREATE TABLE `wlfy3366_starwarsmvc`.`films_comments`
 (

@@ -43,9 +43,9 @@ class FilmController extends WebController
         $actors = $this->filmModel->getActorsByFilmId($id);
         $gallery = $this->filmModel->getGalleryByFilmId($id);
         $comments = $this->commentModel->getCommentsByFilmId($id);
-        foreach ($comments as $comment) {
+        /*foreach ($comments as $comment) {
             $comment->setAuthorInfos($this->commentModel->getUserInfosByCommentId($comment->getId()));
-        }
+        }*/
         $film->setActors($actors);
         $film->setGallery($gallery);
         $film->setComments($comments);
@@ -355,7 +355,13 @@ class FilmController extends WebController
     public function addComment(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $comment = new Comment();
-            $comment->setAuthor($_SESSION['LOGIN']['id']);
+            if(isset($_POST['author'])){
+                $comment->setUserName($_POST['author']);
+                $comment->setAuthor(0);
+            }else{
+                $comment->setUserName($_SESSION['LOGIN']['prenom']);
+                $comment->setAuthor($_SESSION['LOGIN']['id']);
+            }
             $comment->setFilmId($_POST['idFilm']);
             $comment->setComment($_POST['comment']);
             $this->commentModel->addComment($comment);

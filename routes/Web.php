@@ -28,13 +28,13 @@ class Web
         Route::Add('/film/{id}', [$filmController, 'showFilm']);
         Route::Add('/galerie', [$galleryController, 'gallery']);
         Route::Add('/actors', [$actorController, 'actors']);
+        Route::Add('/films/addComment', [$filmController, 'addComment']);
 
         if (SessionHelpers::isLogin()) {
             Route::Add('/logout', [$authController, 'logout']);
             Route::Add('/admin', [$adminController, 'adminFilms']);
             Route::Add('/admin/films', [$adminController, 'adminFilms']);
             Route::Add('/admin/films/add', [$filmController, 'addFilmPage']);
-            Route::Add('/admin/films/addComment', [$filmController, 'addComment']);
             Route::Add('/admin/films/update/{id}', [$filmController, 'updateFilmPage']);
             Route::Add('/admin/films/delete/{id}', [$filmController, 'deleteFilm']);
             Route::Add('/admin/actors', [$actorController, 'adminActors']);

@@ -21,8 +21,8 @@ class CommentModel extends SQL
 
     public function addComment($comment){
         try {
-            $stmt = self::getPdo()->prepare("INSERT INTO comments (comment,user_id) VALUES (?,?)");
-            $stmt->execute([$comment->getComment(), $comment->getAuthor()]);
+            $stmt = self::getPdo()->prepare("INSERT INTO comments (comment,user_name) VALUES (?,?)");
+            $stmt->execute([$comment->getComment(), $comment->getUserName()]);
 
             //insert into films_comments
             $stmt = self::getPdo()->prepare("INSERT INTO films_comments (id_film, id_comment) VALUES (?,?)");
