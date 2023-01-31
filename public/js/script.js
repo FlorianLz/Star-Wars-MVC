@@ -101,4 +101,19 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    if(document.getElementById('megamenu-mobile')){
+        document.getElementById('megamenu-mobile').addEventListener('click',function(){
+            document.querySelector('.navbar-toggle').classList.toggle('collapsed');
+
+            if (document.querySelector('.navbar-toggle').classList.contains('collapsed')) {
+                document.querySelector('body').style.overflow = 'auto';
+                document.querySelector('.header--content').classList.remove('reponsive-menue');
+            } else {
+                document.querySelector('.header--content').classList.add('reponsive-menue');
+                setTimeout(function(){
+                    document.querySelector('body').style.overflow = 'hidden';
+                }, 300);
+            }
+        });
+    }
 });

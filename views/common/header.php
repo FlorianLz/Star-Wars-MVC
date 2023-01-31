@@ -46,24 +46,32 @@ if (SessionHelpers::isInBackOffice()) { ?>
     </header>
 
 <?php } else { ?>
-    <header>
-        <nav class="container">
-            <a href="/">Mini MVC Sample</a>
-            <ul>
+    <header class="header">
+        <div class="container">
+            <nav class="header--content">
+                <a class="header--content_items" href="/films">Films</a>
+                <a class="header--content_items" href="/actors">Acteurs</a>
+                <a class="header--content_items" href="/galerie">Galerie</a>
+                <a class="header--content_items" href="/"><img class="header--logo" src="/public/images/logo.png" alt="star wars"></a>
                 <?php
 
                 if (SessionHelpers::isLogin()) {
-                    echo ' <li><a href="/logout">Logout</a></li>';
+                    echo '<a class="header--content_items" href="/logout">Logout</a>';
                 } else {
-                    echo '<li><a href="/login">Login</a></li>';
-                    echo '<li><a href="/register">Register</a></li>';
+                    echo '<a class="header--content_items" href="/login">Login</a>';
+                    echo '<a class="header--content_items" href="/register">Register</a>';
                 }
                 if(SessionHelpers::isAdmin()){
-                    echo '<li><a href="/admin">Back-office</a></li>';
+                    echo '<a class="header--content_items" href="/admin">Back-office</a>';
                 }
                 ?>
-            </ul>
-        </nav>
+            </nav>
+            <button type="button" id="megamenu-mobile" class="navbar-toggle collapsed" data-toggle="collapse" aria-label="Navigation mobile">
+                <span class="one" aria-hidden="true"></span>
+                <span class="two" aria-hidden="true"></span>
+                <span class="three" aria-hidden="true"></span>
+            </button>
+        </div>
     </header>
 <?php }
 if(SessionHelpers::isInBackOffice()){
