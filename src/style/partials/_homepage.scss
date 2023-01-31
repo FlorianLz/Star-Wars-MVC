@@ -1,0 +1,44 @@
+.hero{
+  .container{
+    position: relative;
+  }
+  &--content{
+    width: 100%;
+    height: calc(100vh - 55px);
+  }
+  &--image{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: -1;
+  }
+  &--title{
+    margin: 0;
+    font-family: 'roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1;
+    color:$white;
+    text-align: center;
+    b{
+      font-family: 'Star Jedi';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 3.7rem;
+      line-height: 1;
+    }
+  }
+  &--time{
+    p{
+      font-family: 'Star Jedi';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 3.7rem;
+      line-height: 1;
+      color: $white;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  }
+}

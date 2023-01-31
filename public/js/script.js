@@ -116,4 +116,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    countdown();
 });
+
+// create function countdown
+function countdown() {
+    // set date
+    var date = new Date();
+    var now = date.getTime();
+    var eventDate = new Date("December 1, 25 00:00:00");
+    var eventTime = eventDate.getTime();
+    var remTime = eventTime - now;
+    // calculate time
+    var s = Math.floor(remTime / 1000);
+    var m = Math.floor(s / 60);
+    var h = Math.floor(m / 60);
+    var d = Math.floor(h / 24);
+    // add 0
+    h %= 24;
+    m %= 60;
+    s %= 60;
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    // display time
+    document.getElementById("days").textContent = d + " jours ";
+    document.getElementById("days").innerText = d + " jours ";
+    document.getElementById("hours").textContent = h + " heures ";
+    document.getElementById("minutes").textContent = m + " minutes ";
+    document.getElementById("seconds").textContent = s + " secondes ";
+    // call function every second
+    setTimeout(countdown, 1000);
+}

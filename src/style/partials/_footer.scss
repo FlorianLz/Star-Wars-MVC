@@ -1,5 +1,4 @@
 .footer{
-    background: $black;
   &--content{
     background: url("../../../public/images/deathOfStar.png") no-repeat;
     background-size: cover;
@@ -47,7 +46,7 @@
     }
   }
   &--text{
-    font-family: 'Lato';
+    font-family: 'roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 2rem;
