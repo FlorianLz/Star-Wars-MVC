@@ -29,7 +29,7 @@
 <section class="actor">
     <div class="container">
         <div class="actor--content">
-            <h2 class="subtitle">Acteurs</h2>
+            <h2 class="subtitle">Les acteurs</h2>
             <div class="actor--list">
                 <?php foreach ($actors as $actor) : ?>
                     <div class="actor--item">
@@ -39,7 +39,7 @@
                 <?php endforeach; ?>
             </div>
             <div class="actor--viewmore">
-                <a class="generic-cta" href="/actors">Voir tous les acteurs</a>
+                <a class="generic-cta" href="/actors">voir tous les acteurs</a>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
 <section class="resume">
     <div class="container">
         <div class="resume--content">
-            <h2 class="subtitle">Le reveil de la force</h2>
+            <h2 class="subtitle">Le réveil de la force</h2>
             <p class="resume--text">Des références à la saga sont cachées sur le site. Arriverez-vous à les retrouver ? </p>
         </div>
     </div>
