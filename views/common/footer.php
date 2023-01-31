@@ -1,4 +1,5 @@
         </div>
+        <?php if(!\utils\SessionHelpers::isInBackOffice()){ ?>
         <footer class="footer">
             <div class="container">
                 <div class="footer--content">
@@ -12,6 +13,7 @@
                 </div>
             </div>
         </footer>
+        <?php } ?>
         <script src="/public/js/script.js" ></script>
     </body>
 </html>

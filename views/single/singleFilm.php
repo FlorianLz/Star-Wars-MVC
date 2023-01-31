@@ -81,8 +81,7 @@
                             <p class="comment--author"><?= $comment->getUserName() ?></p>
                         </div>
                         <div class="comment--item--right">
-                            <?= $comment->created_at ?>
-                            <p class="comment--date">Publié le <?= (new DateTime($comment->created_at))->format('d/m/Y') ?> à <?= (new DateTime($comment->created_at))->format('H:m') ?></p>
+                            <p class="comment--date">Publié le <?= (new DateTime($comment->created_at))->format('d/m/Y') ?> à <?= (new DateTime($comment->created_at))->format('H\hi') ?></p>
                             <p class="comment--text"><?= $comment->getComment() ?></p>
                         </div>
                     </div>
