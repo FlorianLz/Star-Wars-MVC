@@ -18,12 +18,13 @@ class ActorModel extends SQL
      */
     public function getAll(): array
     {
-        $query = "SELECT actors.id as id,actors.name,GROUP_CONCAT(DISTINCT films_actors.played_character SEPARATOR ';') as played_character,GROUP_CONCAT(films.name SEPARATOR ';') as films_presence, actors.picture as picture FROM `films` JOIN films_actors ON films_actors.id_film = films.id JOIN actors ON actors.id = films_actors.id_actor GROUP BY actors.name";
+        $query = "SELECT actors.id as id,actors.name,GROUP_CONCAT(films_actors.played_character SEPARATOR ';') as played_character,GROUP_CONCAT(films.name SEPARATOR ';') as films_presence, actors.picture as picture FROM `films` JOIN films_actors ON films_actors.id_film = films.id JOIN actors ON actors.id = films_actors.id_actor GROUP BY actors.name";
         $stmt = SQL::getPdo()->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(\PDO::FETCH_CLASS, Actor::class);
         foreach ($result as $actor) {
             $actor->setFilmsPresence(explode(';', $actor->getFilmsPresence()));
+            $actor->setPlayedCharacter(explode(';', $actor->getPlayedCharacter()));
         }
         return $result;
     }

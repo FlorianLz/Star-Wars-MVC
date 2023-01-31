@@ -56,13 +56,14 @@ if (SessionHelpers::isInBackOffice()) { ?>
                 <?php
 
                 if (SessionHelpers::isLogin()) {
+                    if(SessionHelpers::isAdmin()){
+                        echo '<a class="header--content_items" href="/admin">Back-office</a>';
+                    }
                     echo '<a class="header--content_items" href="/logout">Logout</a>';
+
                 } else {
                     echo '<a class="header--content_items" href="/login">Login</a>';
                     echo '<a class="header--content_items" href="/register">Register</a>';
-                }
-                if(SessionHelpers::isAdmin()){
-                    echo '<a class="header--content_items" href="/admin">Back-office</a>';
                 }
                 ?>
             </nav>

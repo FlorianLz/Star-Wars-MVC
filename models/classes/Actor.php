@@ -7,7 +7,7 @@ class Actor
     private int $id;
     private string $name;
     private string $picture;
-    private string | null $played_character;
+    private string | array | null $played_character;
     private string $creationDate;
     private string $updateDate;
     private string | array | null  $films_presence;
@@ -63,7 +63,7 @@ class Actor
     /**
      * @return string | null
      */
-    public function getPlayedCharacter(): string | null
+    public function getPlayedCharacter(): string | null | array
     {
         return $this->played_character;
     }
@@ -71,9 +71,13 @@ class Actor
     /**
      * @param $playedCharacter
      */
-    public function setPlayedCharacter($playedCharacter): void
+    public function setPlayedCharacter(string | array | null $playedCharacter): void
     {
-        $this->played_character = $playedCharacter;
+        if(gettype($playedCharacter) == null) {
+            $this->played_character = [];
+        } else {
+            $this->played_character = $playedCharacter;
+        }
     }
 
     /**
