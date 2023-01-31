@@ -92,4 +92,15 @@ class ActorModel extends SQL
         ));
 
     }
+
+    public function updateActor(Actor $actor)
+    {
+        $query = "UPDATE actors SET name = :name, picture = :picture WHERE id = :id";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute(array(
+            "name" => $actor->getName(),
+            "picture" => $actor->getPicture(),
+            "id" => $actor->getId()
+        ));
+    }
 }

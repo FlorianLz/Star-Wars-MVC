@@ -83,4 +83,56 @@ class ActorController extends WebController
 
     }
 
+    public function updateActorPage($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->updateActor($_POST, $_FILES);
+        } else {
+            $actor = $this->actorModel->getActorById($id);
+            return Template::render("views/admin/updateActor.php", array("actor" => $actor));
+        }
+    }
+
+    private function updateActor($params, $files)
+    {
+        var_dump($files);
+        $actor = new Actor();
+        $actor->setId($params['idActor']);
+        $actor->setName($params['actorName']);
+        //upload picture image $_FILES['picture']
+        if ($files['picture']['name'] == "") {
+            $actor->setPicture($params['oldPicture']);
+        }else{
+            //upload picture
+            $picture = $files['picture'];
+            $pictureName = $picture['name'];
+            $pictureTmpName = $picture['tmp_name'];
+            $pictureSize = $picture['size'];
+            $pictureError = $picture['error'];
+            $pictureType = $picture['type'];
+            $pictureExt = explode('.', $pictureName);
+            $pictureActualExt = strtolower(end($pictureExt));
+            $allowed = array('jpg', 'jpeg', 'png');
+            if (in_array($pictureActualExt, $allowed)) {
+                if ($pictureError === 0) {
+                    if ($pictureSize < 1000000) {
+                        $pictureNameNew = uniqid('', true) . "." . $pictureActualExt;
+                        $pictureDestination = 'public/images/actors/' . $pictureNameNew;
+                        move_uploaded_file($pictureTmpName, $pictureDestination);
+                        $actor->setPicture('/'.$pictureDestination);
+                    } else {
+                        $actor->setPicture($params['oldpicture']);
+                    }
+                } else {
+                    $actor->setPicture($params['oldpicture']);
+                }
+            } else {
+                $actor->setPicture($params['oldpicture']);
+            }
+        }
+        $this->actorModel->updateActor($actor);
+        var_dump($files);
+        header("Location: /admin/actors");
+    }
+
 }

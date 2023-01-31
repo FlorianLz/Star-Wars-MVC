@@ -138,13 +138,11 @@ function countdown() {
     s %= 60;
     h = (h < 10) ? "0" + h : h;
     m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
     // display time
     document.getElementById("days").textContent = d + " jours ";
     document.getElementById("days").innerText = d + " jours ";
     document.getElementById("hours").textContent = h + " heures ";
     document.getElementById("minutes").textContent = m + " minutes ";
-    document.getElementById("seconds").textContent = s + " secondes ";
     // call function every second
     setTimeout(countdown, 1000);
 }

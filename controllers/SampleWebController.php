@@ -3,13 +3,22 @@
 namespace controllers;
 
 use controllers\base\WebController;
+use models\ActorModel;
 use utils\Template;
 
 class SampleWebController extends WebController
 {
+    private $actorModel;
+
+    public function __construct()
+    {
+        $this->actorModel = new ActorModel();
+    }
+
     function home(): string
     {
-        return Template::render("views/global/home.php", array("date" => date("d-m-Y à H:i")));
+        $actors = $this->actorModel->getAllActors();
+        return Template::render("views/global/home.php", array("actors" => $actors));
     }
 
     function exemple($parametre = 'Valeur par défaut'): string

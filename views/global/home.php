@@ -26,6 +26,25 @@
     </div>
 </section>
 
+<section class="actor">
+    <div class="container">
+        <div class="actor--content">
+            <h2 class="subtitle">Acteurs</h2>
+            <div class="actor--list">
+                <?php foreach ($actors as $actor) : ?>
+                    <div class="actor--item">
+                        <img class="actor--image" src="<?= $actor->getPicture() ?>" alt="<?= $actor->getName() ?>">
+                        <p class="actor--name"><?= $actor->getName() ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="actor--viewmore">
+                <a class="generic-cta" href="/actors">Voir tous les acteurs</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="resume">
     <div class="container">
         <div class="resume--content">
