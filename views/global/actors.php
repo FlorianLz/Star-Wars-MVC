@@ -2,7 +2,7 @@
     <div class="container">
         <div class="banner--content">
             <h1 class="title">Les acteurs</h1>
-            <img class="banner--image" src="/public/images/bannerDefault.png" alt="">
+            <img class="banner--image" src="/public/images/bannerDefault.png" alt="banniere">
         </div>
     </div>
 </section>

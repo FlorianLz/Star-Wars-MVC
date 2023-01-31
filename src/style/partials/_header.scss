@@ -1,21 +1,38 @@
-header{
+.header{
   background-color: $black;
   height: 55px;
   font-family: "Star Jedi", serif;
-  nav{
+  .container{
     height: 100%;
-    @include flex(row, space-between, center);
-    ul{
-      @include flex();
-      column-gap: 15px;
-      li{
-        @include flex();
-        a{
-          color: $white;
-          text-decoration: none;
-        }
-      }
+    position: relative;
+  }
+  &--content{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 10px;
+
+    &_items{
+      font-family: 'Star Jedi';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1;
+      color: $white;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+  }
+  &--logo{
+    height: 100%;
+    max-width: max-content;
+  }
+  .navbar-toggle {
+    display: none;
   }
 }
 
@@ -69,6 +86,74 @@ $hover-color: #457b9d;
           color: white;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .header {
+    &--content {
+      display: flex;
+      position: absolute;
+      top: -1000px;
+      left: 0;
+      width: 100%;
+      background-color: #000;
+      z-index: 9;
+      padding: 10px 0;
+      flex-direction: column;
+      justify-content: center;
+      height: calc(100vh - 55px);
+      overflow: hidden;
+    }
+    .navbar-toggle {
+      background: transparent;
+      border: $white;
+      cursor: pointer;
+      display: block;
+      height: 25px;
+      position: absolute;
+      padding: 5px 0;
+      width: 27px;
+      z-index: 10;
+      right: 15px;
+      top: 15px;
+
+      span {
+        border-radius:2px;
+        position:absolute;
+        display:block;
+        height:5px;
+        width:100%;
+        background-color:$white;
+        transform:rotate(0);
+        transition:all 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+
+        &.one{
+          top:0
+        }
+        &.two {
+          top:10px
+        }
+        &.three {
+          top:calc(100% - 5px)
+        }
+      }
+
+      &:not(.collapsed) {
+        .one {
+          transform: translateY(10px) rotate(45deg)
+        }
+        .two {
+          opacity:0
+        }
+        .three {
+          transform:translateY(-10px) rotate(-45deg)
+        }
+      }
+    }
+    .reponsive-menue{
+      top: 55px;
     }
   }
 }
