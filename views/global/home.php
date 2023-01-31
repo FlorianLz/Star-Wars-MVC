@@ -30,7 +30,7 @@
     <div class="container">
         <div class="resume--content">
             <h2 class="subtitle">Le reveil de la force</h2>
-            <p class="resume--text">Des références à la sage sont cachées sur le site. Arriverez-vous à les retrouver ? </p>
+            <p class="resume--text">Des références à la saga sont cachées sur le site. Arriverez-vous à les retrouver ? </p>
         </div>
     </div>
 </section>
