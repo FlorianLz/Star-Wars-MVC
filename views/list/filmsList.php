@@ -35,15 +35,16 @@ if (SessionHelpers::isInBackOffice()) { ?>
 
 <?php } else {
     $nbFilms = 0;?>
-    <?php foreach ($films as $film) { ?>
-        <section class="banner default">
-            <div class="container">
-                <div class="banner--content">
-                    <h1 class="title">Les films</h1>
-                    <img class="banner--image" src="/public/images/bannerDefault.png" alt="banniere">
-                </div>
+    <section class="banner default">
+        <div class="container">
+            <div class="banner--content">
+                <h1 class="title">Les films</h1>
+                <img class="banner--image" src="/public/images/bannerDefault.png" alt="banniere">
             </div>
-        </section>
+        </div>
+    </section>
+    <?php foreach ($films as $film) { ?>
+
 
         <section class="film <?= $nbFilms % 2 != 0 ? 'reverse' : '' ?>">
             <div class="container">
