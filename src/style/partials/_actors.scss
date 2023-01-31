@@ -1,0 +1,40 @@
+.actor{
+  &--content {
+    &__list__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      margin-bottom: 50px;
+
+      @media (max-width: 767px) {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      &__name{
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+      &__films{
+        font-size: 1.2rem;
+        font-weight: 400;
+        li{
+          margin-bottom: 10px;
+        }
+      }
+    }
+    &__left{
+      img{
+        width: auto;
+        height: 300px;
+        object-fit: cover;
+        @media (max-width: 767px) {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}

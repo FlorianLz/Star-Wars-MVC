@@ -1,3 +1,64 @@
+.film{
+  margin: 50px 0;
+  &.reverse{
+    .film--content{
+      flex-direction: row-reverse;
+      @media (max-width: 767px) {
+        @include flex(column-reverse, flex-start, stretch, nowrap);
+      }
+      &_link{
+        @include flex(row, flex-start, center, nowrap);
+      }
+    }
+  }
+  &--content{
+    @include flex(row, flex-start, stretch, nowrap);
+    gap: 45px;
+
+    @media (max-width: 767px) {
+      @include flex(column-reverse, flex-start, stretch, nowrap);
+    }
+    &__left{
+      flex-basis: max-content;
+    }
+    &__right{
+      flex-basis: 80%;
+      @media (max-width: 767px) {
+        flex-basis: 100%;
+      }
+    }
+    &_date{
+      margin:10px 0 20px 0;
+    }
+    &_synopsis{
+      margin: 0 0 20px;
+    }
+    &_date,&_synopsis{
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1;
+      color: $black;
+    }
+    &_image{
+      width: 325px;
+      height: auto;
+      object-fit: cover;
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+    &_link{
+      width: 100%;
+      @include flex(row, flex-end, center, nowrap);
+      @media (max-width: 767px) {
+        @include flex(row, flex-start, stretch, nowrap);
+      }
+    }
+  }
+}
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;
@@ -60,7 +121,6 @@
     }
   }
 }
-
 form#updateFilm {
   display: flex;
   flex-wrap: wrap;
@@ -102,7 +162,6 @@ form#updateFilm {
     }
   }
 }
-
 .modal {
   position: fixed;
   z-index: 1;
