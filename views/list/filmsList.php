@@ -8,7 +8,7 @@ if (SessionHelpers::isInBackOffice()) { ?>
         <?php foreach ($films as $film) { ?>
             <div class="movie-card" data-id="<?= $film->getId() ?>">
                 <img src="/<?= $film->getCover() ?>" class="cover" alt="<?= $film->getName() ?>">
-                <h3 class="title"><?= $film->getName() ?></h3>
+                <h3 class="title backoffice"><?= $film->getName() ?></h3>
                 <p class="date">Sortie : <?= $film->getReleaseDate() ?></p>
                 <div class="icons">
                     <a href="/admin/films/update/<?= $film->getId() ?>">

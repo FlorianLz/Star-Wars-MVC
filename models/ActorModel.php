@@ -31,7 +31,7 @@ class ActorModel extends SQL
 
     public function getAllActorsAdmin(): array
     {
-        $query = "SELECT actors.id as id, actors.name, GROUP_CONCAT(DISTINCT films_actors.played_character SEPARATOR ';') as played_character, GROUP_CONCAT(films.name SEPARATOR ';') as films_presence 
+        $query = "SELECT actors.id as id, actors.name, GROUP_CONCAT(films_actors.played_character SEPARATOR ';') as played_character, GROUP_CONCAT(films.name SEPARATOR ';') as films_presence, actors.picture as picture 
         FROM `actors` 
         LEFT JOIN films_actors ON films_actors.id_actor = actors.id 
         LEFT JOIN films ON films.id = films_actors.id_film  
@@ -42,6 +42,7 @@ class ActorModel extends SQL
         foreach ($result as $actor) {
             if($actor->getFilmsPresence() != null){
                 $actor->setFilmsPresence(explode(';', $actor->getFilmsPresence()));
+                $actor->setPlayedCharacter(explode(';', $actor->getPlayedCharacter()));
             }
         }
         return $result;

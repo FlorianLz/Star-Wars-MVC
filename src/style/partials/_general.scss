@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: Roboto, sans-serif;
-  transition: 0.3s;
+  //transition: 0.3s;
 }
 
 html {
@@ -39,7 +39,7 @@ img {
 #content-bo {
   width: calc(100% - 200px);
   margin-left: 200px;
-  padding: 30px;
+  padding: 55px 30px 30px;
 }
 
 .generic-cta {
@@ -59,7 +59,7 @@ img {
   }
 }
 
-.title{
+.title:not(.backoffice){
   color: $white;
   font-family: "Star Jedi", serif;
   font-weight: 400;
