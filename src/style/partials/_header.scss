@@ -34,7 +34,8 @@
     }
   }
   &--logo{
-    height: 100%;
+    height: auto;
+    width: 80px;
     max-width: max-content;
   }
   .navbar-toggle {
