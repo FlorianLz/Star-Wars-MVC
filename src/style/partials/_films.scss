@@ -42,8 +42,8 @@
       color: $black;
     }
     &_image{
-      width: 325px;
-      height: auto;
+      width: auto;
+      max-height: 300px;
       object-fit: cover;
       @media (max-width: 767px) {
         width: 100%;
@@ -60,9 +60,7 @@
 }
 
 .movie-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  @include flex(row, flex-start, flex-start, wrap);
   column-gap: 20px;
 
   .movie-card {

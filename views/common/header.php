@@ -13,7 +13,7 @@
 if (SessionHelpers::isInBackOffice()) { ?>
     <header class="sidebar">
         <div class="header">
-            <h2>Star Wars MVC</h2>
+            <h2>Star Wars MVC - Back Office</h2>
         </div>
         <ul>
             <li><a href="/">
