@@ -1,0 +1,163 @@
+.loader {
+  background-color: $black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  animation-name: hideAfterReplique;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 3.5s;
+  animation-fill-mode: forwards;
+
+  p {
+    opacity: 0;
+    animation-delay: 0.5s;
+    animation-duration: 3s;
+    animation-name: RepliqueAnimation;
+    animation-timing-function: ease-out;
+    color: $white;
+    font-size: 3rem;
+  }
+}
+
+@keyframes RepliqueAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hideAfterReplique {
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.easteregg{
+  @include flex();
+  background-color: $black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  &.animate{
+    animation-name: showAndHideEasterEgg;
+    animation-duration: 15s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+    .easteregg--container--content > div {
+      position: absolute;
+      top: 100%;
+      animation-delay: 2s;
+      animation-duration: 10s;
+      animation-name: animateText;
+      animation-timing-function: linear;
+    }
+  }
+&--container{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  &--content{
+    left: 50%;
+    width: 1200px;
+    margin: 0 0 0 -600px;
+    top: auto;
+    bottom: 0;
+    height: 50em;
+    color: #ffff66;
+    font-size: 64px;
+    text-align: justify;
+    transform-origin: center bottom;
+    transform: perspective(300px) rotateX(25deg);
+    position: absolute;
+  }
+}
+
+  &--title{
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+
+
+}
+
+@keyframes animateText {
+  0% {
+    top: 100%;
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes showAndHideEasterEgg {
+  0% {
+    opacity: 0;
+    z-index: 100;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}

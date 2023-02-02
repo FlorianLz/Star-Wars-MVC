@@ -1,12 +1,38 @@
+<?php $repliques = [
+    ["texte" => '"Au secours Obi-Wan Kenobi, vous êtes mon seul espoir."'],
+    ["texte" => '"La force sera avec toi, toujours."'],
+    ["texte" => '"Fais-le ou ne le fais pas. Il n\'y a pas d\'essai."'],
+    ["texte" => '"Je suis ton père."'],
+    ["texte" => '"Je ne viendrai jamais du côté obscur. Vous avez échoué."'],
+    ["texte" => '"La peur est le chemin vers le côté obscur : la peur mène à la colère, la colère mène à la haine, la haine mène à la souffrance."'],
+    ["texte" => '"Le jour où nous cessons de croire que la démocratie fonctionne est le jour où nous perdons."'],
+    ["texte" => '"Je t\'aime." "Je sais."'],
+    ["texte" => "Un Jedi n'utilise pas la violence, il la maîtrise."],
+    ["texte" => '"Vous êtes venus dans cette casserole ? Vous êtes plus braves que je ne le pensais."'],
+    ["texte" => '"La puissance ne fait pas tout."'],
+    ["texte" => '"Que la force soit avec toi."'],
+    ["texte" => '"Fais le ou ne le fais pas. Il n\'y a pas d\'essai."'],
+    ["texte" => '"Maintenant jeune Skywalker, tu vas mourir."'],
+    ["texte" => '"Il y en a toujours un pour manger l\'autre"'],
+    ["texte" => '"Aucune limite à mon pouvoir !"'],
+    ["texte" => '"Nous étions comme des frères. Je t\'aimais Anakin !"'],
+    ["texte" => '"Chewie, on est à la maison."'],
+    ["texte" => '"L\'Empire est fini."'],
+    ["texte" => '"Nous sommes les derniers espoirs de la galaxie."']
+];
+?>
+<div class="loader">
+    <p><?= $repliques[array_rand($repliques)]["texte"] ?></p>
+</div>
 <section class="hero">
     <div class="container">
         <img class="hero--image" src="/public/images/homepage.png">
         <div class="hero--content">
             <h1 class="hero--title">Prochain film <br><b>Star Wars x</b></h1>
             <div class="hero--time">
+                <p id="years"></p>
+                <p id="months"></p>
                 <p id="days"></p>
-                <p id="hours"></p>
-                <p id="minutes"></p>
             </div>
         </div>
     </div>

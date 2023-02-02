@@ -9,7 +9,7 @@
                         <a class="footer--link_item" href="/galerie">$ galerie</a>
                     </nav>
                     <p class="footer--text">© 2023 - Star Wars ECV</p>
-                    <img class="easter--egg" src="/public/images/millenium.png">
+                    <img id="easter-egg" class="easter--egg" src="/public/images/millenium.png">
                 </div>
             </div>
         </footer>

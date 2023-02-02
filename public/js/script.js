@@ -116,33 +116,36 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    countdown();
+    if(document.getElementById("days")) {
+        countdown();
+    }
+
+    if(document.getElementById('easter-egg')){
+        document.getElementById('easter-egg').addEventListener('click',function(){
+            console.log('click')
+            document.querySelector('.easteregg').classList.remove('animate');
+            setTimeout(function(){
+                document.querySelector('.easteregg').classList.add('animate');
+            }, 100);
+        });
+        document.querySelector('.footer--text').addEventListener('click',function(){
+            console.log('click')
+            document.querySelector('.easteregg').classList.remove('animate');
+            setTimeout(function(){
+                document.querySelector('.easteregg').classList.add('animate');
+            }, 100);
+        });
+    }
 });
 
-// create function countdown
 function countdown() {
-    // set date
-    var date = new Date();
-    var now = date.getTime();
-    var eventDate = new Date("December 1, 25 00:00:00");
-    var eventTime = eventDate.getTime();
-    var remTime = eventTime - now;
-    // calculate time
-    var s = Math.floor(remTime / 1000);
-    var m = Math.floor(s / 60);
-    var h = Math.floor(m / 60);
-    var d = Math.floor(h / 24);
-    // add 0
-    h %= 24;
-    m %= 60;
-    s %= 60;
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    // display time
-    document.getElementById("days").textContent = d + " jours ";
-    document.getElementById("days").innerText = d + " jours ";
-    document.getElementById("hours").textContent = h + " heures ";
-    document.getElementById("minutes").textContent = m + " minutes ";
-    // call function every second
-    setTimeout(countdown, 1000);
+    let eventDate = new Date('2024-12-01 00:00:00');
+    let currentDate = new Date();
+    let totalDays = (eventDate - currentDate) / 1000 / 60 / 60 / 24;
+    let years = Math.floor(totalDays / 365);
+    let months = Math.floor((totalDays % 365) / 30);
+    let days = Math.floor((totalDays % 365) % 30);
+    document.getElementById("days").innerHTML = days + ' jours';
+    document.getElementById("years").innerHTML = years + ' ans';
+    document.getElementById("months").innerHTML = months + ' mois';
 }
