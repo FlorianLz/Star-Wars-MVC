@@ -1,5 +1,5 @@
         </div>
-        <?php if(!\utils\SessionHelpers::isInBackOffice()){ ?>
+        <?php if(!\utils\SessionHelpers::isInBackOffice() || !\utils\SessionHelpers::isAdmin()){ ?>
         <footer class="footer">
             <div class="container">
                 <div class="footer--content">

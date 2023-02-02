@@ -120,7 +120,7 @@
     }
   }
 }
-form#updateFilm,form#addFilm {
+form#updateFilm,form#addFilm, form#addActor, form#formLogin, form#formInscription {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -133,6 +133,8 @@ form#updateFilm,form#addFilm {
   }
 
   input[type="text"],
+  input[type="email"],
+  input[type="password"],
   input[type="date"],
   select {
     width: 100%;
@@ -157,6 +159,17 @@ form#updateFilm,form#addFilm {
       column-gap: 15px;
       select,input{
         width: 45%;
+      }
+    }
+  }
+
+  .pasInscrit{
+    margin: 10px 0;
+    text-align: center;
+    a{
+      color: $black;
+      &:hover{
+        text-decoration: underline;
       }
     }
   }

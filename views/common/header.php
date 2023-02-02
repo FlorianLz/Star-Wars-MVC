@@ -10,7 +10,7 @@
 <body>
 <?php use utils\SessionHelpers;
 
-if (SessionHelpers::isInBackOffice()) { ?>
+if (SessionHelpers::isInBackOffice() && SessionHelpers::isAdmin()) { ?>
     <header class="sidebar">
         <div class="header">
             <h2>Star Wars MVC - Back Office</h2>
@@ -75,7 +75,7 @@ if (SessionHelpers::isInBackOffice()) { ?>
         </div>
     </header>
 <?php }
-if(SessionHelpers::isInBackOffice()){ ?>
+if(SessionHelpers::isInBackOffice() && SessionHelpers::isAdmin()){ ?>
 <div id="content-bo">
 <?php }else{
     ?>

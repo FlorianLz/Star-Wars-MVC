@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target.matches('.actors-line input')) {
                 if(document.getElementById('actor'+Number(nbActors)+'character').value !== ''){
                     let actorsSelect = document.getElementById('actor1').cloneNode(true);
-                    console.log(Number(nbActors + 1));
                     actorsSelect.setAttribute('name', 'actor'+Number(nbActors + 1));
                     actorsSelect.setAttribute('id', 'actor'+Number(nbActors + 1));
                     let actorsCharacter = document.createElement('input');
@@ -123,14 +122,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(document.getElementById('easter-egg')){
         document.getElementById('easter-egg').addEventListener('click',function(){
-            console.log('click')
             document.querySelector('.easteregg').classList.remove('animate');
             setTimeout(function(){
                 document.querySelector('.easteregg').classList.add('animate');
             }, 100);
         });
         document.querySelector('.footer--text').addEventListener('click',function(){
-            console.log('click')
             document.querySelector('.easteregg').classList.remove('animate');
             setTimeout(function(){
                 document.querySelector('.easteregg').classList.add('animate');

@@ -9,11 +9,13 @@
     </section>
 <?php } ?>
 
+<?php var_dump($_SESSION['LOGIN']); ?>
+
 <section class="actor">
     <div class="container">
         <div class="actor--content">
             <?php if($admin){ ?>
-            <a href="/admin/actors/add">Ajouter un acteur</a>
+            <a class="generic-cta" href="/admin/actors/add">Ajouter un acteur</a>
             <?php } ?>
             <div class="actor--content__list">
                 <?php foreach ($actors as $actor) : ?>

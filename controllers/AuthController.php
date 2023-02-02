@@ -47,7 +47,7 @@ class AuthController extends WebController
             if($email != '' && $password != '') {
                 $user = AuthModel::getUserByEmail($email);
                 if($user != null) {
-                    if(password_verify($password, $user['password'])) {
+                    if(password_verify($password, $user->getPassword())) {
                         SessionHelpers::login($user);
                         header('Location: /');
                     }

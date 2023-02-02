@@ -30,7 +30,7 @@ class Web
         Route::Add('/actors', [$actorController, 'actors']);
         Route::Add('/films/addComment', [$filmController, 'addComment']);
 
-        if (SessionHelpers::isLogin()) {
+        if (SessionHelpers::isLogin() && SessionHelpers::isAdmin()) {
             Route::Add('/logout', [$authController, 'logout']);
             Route::Add('/admin', [$adminController, 'adminFilms']);
             Route::Add('/admin/films', [$adminController, 'adminFilms']);
@@ -47,7 +47,12 @@ class Web
         } else {
             Route::Add('/login', [$authController, 'login']);
             Route::Add('/register', [$authController, 'register']);
-            Route::Add('/admin', [$authController, 'login']);
+            if(SessionHelpers::isLogin()) {
+                Route::Add('/admin', [$main, 'home']);
+                Route::Add('/logout', [$authController, 'logout']);
+            }else {
+                Route::Add('/admin', [$authController, 'login']);
+            }
         }
     }
 }

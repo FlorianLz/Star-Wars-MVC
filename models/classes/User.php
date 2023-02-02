@@ -8,6 +8,40 @@ class User
     private string $email;
     private string $nom;
     private string $prenom;
+    private bool $admin;
+    private string $password;
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->admin;
+    }
+
+    /**
+     * @param bool $admin
+     */
+    public function setAdmin(bool $admin): void
+    {
+        $this->admin = false;
+    }
 
     /**
      * @return int

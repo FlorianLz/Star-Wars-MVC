@@ -22,6 +22,7 @@ body {
 
 #content{
   padding-top: 55px;
+  min-height: calc(100vh - 200px);
 }
 
 a {
@@ -46,6 +47,11 @@ img {
         width: 100%;
         margin-left: 0;
     }
+  .generic-cta {
+    margin: 20px 0;
+    width: fit-content;
+    display: block;
+  }
 }
 
 .generic-cta {

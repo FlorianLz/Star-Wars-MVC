@@ -2,6 +2,7 @@
 namespace models;
 
 use models\base\SQL;
+use models\classes\User;
 
 class AuthModel extends SQL
 {
@@ -29,6 +30,6 @@ class AuthModel extends SQL
     {
         $stmt = self::getPdo()->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
-        return $stmt->fetch();
+        return $stmt->fetchObject(User::class);
     }
 }
