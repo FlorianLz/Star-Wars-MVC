@@ -1,3 +1,4 @@
+//Header principal
 .header{
   background-color: $black;
   height: 55px;
@@ -20,10 +21,10 @@
     padding: 10px;
 
     &_items{
-      font-family: 'Star Jedi';
+      font-family: 'Star Jedi', sans-serif;
       font-style: normal;
       font-weight: 400;
-      font-size: 2rem;
+      font-size: 1.6rem;
       line-height: 1;
       color: $white;
       height: 100%;
@@ -43,14 +44,8 @@
 
 //Header back-office
 
-$sidebar-width: 200px;
-$header-padding: 10px;
-$icon-size: 24px;
-$icon-margin: 10px;
-$hover-color: #457b9d;
-
 .sidebar {
-  width: $sidebar-width;
+  width: 200px;
   height: 100%;
   background-color: #f4f4f4;
   position: fixed;
@@ -59,9 +54,9 @@ $hover-color: #457b9d;
   padding-top: 55px;
 
   .header {
-    padding: $header-padding;
-    text-align: center;
+    padding: 10px;
     color: white;
+    @include flex();
   }
 
   ul {
@@ -70,7 +65,7 @@ $hover-color: #457b9d;
     margin: 0;
 
     li {
-      padding: $header-padding;
+      padding: 10px;
 
       a {
         color: black;
@@ -79,14 +74,14 @@ $hover-color: #457b9d;
         align-items: center;
 
         .icon {
-          width: $icon-size;
-          height: $icon-size;
+          width: 24px;
+          height: 24px;
           fill: currentColor;
-          margin-right: $icon-margin;
+          margin-right: 10px;
         }
       }
       &:hover {
-        background-color: $hover-color;
+        background-color: $black;
         color: white;
         a {
           color: white;
@@ -111,6 +106,7 @@ $hover-color: #457b9d;
       justify-content: center;
       height: calc(100vh - 55px);
       overflow: hidden;
+      transition: top 0.3s ease;
     }
     .navbar-toggle {
       background: transparent;
@@ -160,6 +156,7 @@ $hover-color: #457b9d;
     }
     .reponsive-menue{
       top: 55px;
+      transition: all 0.3s ease;
     }
   }
 }

@@ -34,10 +34,10 @@
       margin: 0 0 20px;
     }
     &_date,&_synopsis{
-      font-family: 'roboto';
+      font-family: 'roboto', sans-serif;
       font-style: normal;
       font-weight: 400;
-      font-size: 2rem;
+      font-size: 1.6rem;
       line-height: 1;
       color: $black;
     }
@@ -95,7 +95,7 @@
         color: $black;
 
         &:hover {
-          color: $hover-color;
+          color: $black;
         }
       }
 
@@ -107,7 +107,7 @@
         cursor: pointer;
 
         &:hover {
-          color: $hover-color;
+          color: $black;
         }
       }
 

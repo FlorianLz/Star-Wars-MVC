@@ -12,7 +12,7 @@
 
 if (SessionHelpers::isInBackOffice()) { ?>
     <header class="sidebar">
-        <div class="header" style="background-color: #457b9d;">
+        <div class="header">
             <h2>Star Wars MVC</h2>
         </div>
         <ul>

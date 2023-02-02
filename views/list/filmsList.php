@@ -54,7 +54,7 @@ if (SessionHelpers::isInBackOffice()) { ?>
                     </div>
                     <div class="film--content__right">
                         <h2 class="subtitle--variant"><?= $film->getName() ?></h2>
-                        <p class="film--content_date"><?= $film->getReleaseDate() ?></p>
+                        <p class="film--content_date">Publié le <?= (new DateTime($film->getReleaseDate()))->format('d/m/Y') ?></p>
                         <p class="film--content_synopsis"><?= $film->getSynopsis() ?></p>
                         <div class="film--content_link">
                             <a class="generic-cta" href="/film/<?= $film->getId() ?>">Plus d'infos</a>

@@ -1,11 +1,20 @@
 .actor{
   &--content {
+    &__list {
+      @include flex(row, space-between, center, wrap);
+      padding: 25px 0;
+      @media (max-width: 767px) {
+        padding: 12.5px 0;
+        @include flex(column, center, center, nowrap);
+      }
+    }
     &__list__item {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 50px;
       margin-bottom: 50px;
+      width: 50%;
 
       @media (max-width: 767px) {
         flex-direction: column;
@@ -28,8 +37,8 @@
     &__left{
       img{
         width: auto;
-        max-width: 300px;
-        min-height: 300px;
+        max-width: 200px;
+        min-height: 250px;
         object-fit: cover;
         @media (max-width: 767px) {
           width: 100%;

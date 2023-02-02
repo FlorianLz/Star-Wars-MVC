@@ -29,7 +29,7 @@
 <section class="actor">
     <div class="container">
         <div class="actor--content">
-            <h2 class="subtitle">Les acteurs</h2>
+            <h2 class="subtitle">Des acteurs connus</h2>
             <div class="actor--list">
                 <?php foreach ($actors as $actor) : ?>
                     <div class="actor--item">
@@ -49,7 +49,7 @@
     <div class="container">
         <div class="resume--content">
             <h2 class="subtitle">Le réveil de la force</h2>
-            <p class="resume--text">Des références à la saga sont cachées sur le site. Arriverez-vous à les retrouver ? </p>
+            <p class="resume--text">Une animation spéciale à la saga est cachée sur le site. Arriverez-vous à la retrouver ? </p>
         </div>
     </div>
 </section>

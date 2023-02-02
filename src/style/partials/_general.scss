@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   font-family: Roboto, sans-serif;
-  //transition: 0.3s;
 }
 
 html {
@@ -43,10 +42,10 @@ img {
 }
 
 .generic-cta {
-  font-family: 'Star Jedi Hollow';
+  font-family: 'Star Jedi Hollow', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 1;
   color: $black;
   background: $white;
@@ -55,7 +54,7 @@ img {
   &:hover {
     background: $black;
     color: $white;
-    font-family: 'Star Jedi';
+    font-family: 'Star Jedi', sans-serif;
   }
 }
 
@@ -63,7 +62,7 @@ img {
   color: $white;
   font-family: "Star Jedi", serif;
   font-weight: 400;
-  font-size: 7rem;
+  font-size: 4.8rem;
   line-height: 1;
   margin: 0 auto;
   text-align: center;
@@ -78,7 +77,7 @@ img {
   font-family: 'Star Jedi Hollow';
   font-style: normal;
   font-weight: 400;
-  font-size: 5rem;
+  font-size: 4rem;
   color: $black;
 
   @media (max-width: 991px) {
@@ -88,8 +87,8 @@ img {
     font-size: 2.4rem;
   }
   &--variant{
-    font-family: 'Star Jedi';
-    font-size: 5rem;
+    font-family: 'Star Jedi', sans-serif;
+    font-size: 3.2rem;
     @media (max-width: 991px) {
       font-size: calc(5rem * 0.7);
     }
