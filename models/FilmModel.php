@@ -58,7 +58,7 @@ class FilmModel extends SQL
 
     public function addFilm(Film $film)
     {
-        $query = "INSERT INTO films (name, resume, synopsis, release_date, trailer, cover) VALUES (:name, :resume, :synopsis, :release_date, :trailer, :cover)";
+        $query = "INSERT INTO films (name, resume, synopsis, release_date, trailer, cover, banner) VALUES (:name, :resume, :synopsis, :release_date, :trailer, :cover, :banner)";
         $stmt = SQL::getPdo()->prepare($query);
         $stmt->execute(array(
             "name" => $film->getName(),
@@ -66,7 +66,8 @@ class FilmModel extends SQL
             "synopsis" => $film->getSynopsis(),
             "release_date" => $film->getReleaseDate(),
             "trailer" => $film->getTrailer(),
-            "cover" => $film->getCover()
+            "cover" => $film->getCover(),
+            "banner" => $film->getBanner()
         ));
         $id = SQL::getPdo()->lastInsertId();
         $film->setId($id);

@@ -1,5 +1,5 @@
 <h1>Ajouter un film</h1>
-<form method="POST" action="/admin/films/add" enctype="multipart/form-data">
+<form method="POST" action="/admin/films/add" enctype="multipart/form-data" id="addFilm">
     <label for="name">Titre du film</label>
     <input type="text" id="name" name="name" placeholder="Titre du film...">
     <label for="resume">Résumé du film</label>
@@ -12,17 +12,24 @@
     <input type="text" id="trailer" name="trailer" placeholder="Lien du trailer...">
     <label for="cover">Cover image</label>
     <input type="file" id="cover" name="cover">
-    <label for="cover">Banner image</label>
+    <label for="cover">Bannière</label>
     <input type="file" id="banner" name="banner">
     <label for="gallery">Gallery images</label>
     <input type="file" id="gallery" name="gallery[]" multiple>
     <label for="actors">Acteurs :</label>
-    <select name="actor1" id="actor1">
-        <?php foreach ($actors as $actor) : ?>
-            <option value="<?= $actor->getId() ?>"><?= $actor->getName() ?></option>
-        <?php endforeach; ?>
-    </select>
-    <input type="text" id="actor2character" name="actor1character" placeholder="Personnage joué...">
-    <input type="hidden" id="nbActors" name="nbActors" value="2">
-    <input type="submit" value="Ajouter">
+    <div class="actors-container">
+        <div class="actors-line">
+            <select name="actor1" id="actor1">
+                <?php foreach ($actors as $key => $actor) : ?>
+                    <option value="<?= $actor->getId() ?>"
+
+                    ><?= $actor->getName() ?></option>
+                <?php endforeach; ?>
+            </select>
+            <input type="text" id="actor1character" name="actor1character"
+                   placeholder="Personnage joué..." value="">
+        </div>
+    </div>
+    <input type="hidden" id="nbActors" name="nbActors" value="1">
+    <input type="submit" value="Ajouter" class="generic-cta">
 </form>

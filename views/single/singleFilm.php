@@ -34,7 +34,7 @@
             <div class="actor--list">
                 <?php foreach ($film->getActors() as $actor) { ?>
                     <div class="actor--item">
-                        <img class="actor--image" src="<?= $actor->getPicture() ?>" alt="<?= $actor->getName() ?>">
+                        <img class="actor--image" src="/<?= $actor->getPicture() ?>" alt="<?= $actor->getName() ?>">
                         <p class="actor--name"><?= $actor->getName() ?></p>
                         <p class="actor--played"><?= $actor->getPlayedCharacter() ?></p>
                     </div>

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     });
 
-    if(document.getElementById('updateFilm')){
+    if(document.getElementById('updateFilm') || document.getElementById('addFilm')){
         //on récupère le nombre d'acteurs
         let nbActors = Number(document.getElementById('nbActors').value);
         let actorsContainer = document.querySelector('.actors-container');

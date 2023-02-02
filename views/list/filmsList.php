@@ -3,7 +3,7 @@
 use utils\SessionHelpers;
 
 if (SessionHelpers::isInBackOffice()) { ?>
-    <a href="/admin/films/add">Ajouter un film</a>
+    <a class="generic-cta" href="/admin/films/add">Ajouter un film</a>
     <div class="movie-list">
         <?php foreach ($films as $film) { ?>
             <div class="movie-card" data-id="<?= $film->getId() ?>">
