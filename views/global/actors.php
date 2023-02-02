@@ -36,7 +36,7 @@
                                 <div class="actor--content__list__item__delete">
                                     <form action="/admin/actors/delete/<?= $actor->getId() ?>" method="POST">
                                         <input type="hidden" name="id" value="<?= $actor->getId() ?>">
-                                        <input type="submit" value="Supprimer">
+                                        <input class="generic-cta" type="submit" value="Supprimer">
                                     </form>
                                 </div>
                             <?php endif; ?>
