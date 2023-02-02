@@ -70,7 +70,7 @@
                     <?php } ?>
                     <textarea type="text" name="comment" placeholder="Commentaire..." required></textarea>
                     <input type="hidden" name="idFilm" value="<?= $film->getId() ?>">
-                    <input type="submit" value="Ajouter un commentaire">
+                    <input type="submit" value="Ajouter un commentaire" class="generic-cta">
                 </form>
             </div>
             <div class="comment--list">
