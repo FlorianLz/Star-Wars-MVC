@@ -17,7 +17,7 @@ class SampleWebController extends WebController
 
     function home(): string
     {
-        $actors = $this->actorModel->getAllActors();
+        $actors = $this->actorModel->getRandomActors(5);
         return Template::render("views/global/home.php", array("actors" => $actors));
     }
 

@@ -56,6 +56,14 @@ class ActorModel extends SQL
         return $stmt->fetchAll(\PDO::FETCH_CLASS, Actor::class);
     }
 
+    public function getRandomActors($nb): array
+    {
+        $query = "SELECT * FROM actors ORDER BY RAND() LIMIT $nb";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Actor::class);
+    }
+
     public function addActor(Actor $actor)
     {
         $query = "INSERT INTO actors (name, picture) VALUES (:name, :picture)";
