@@ -19,7 +19,7 @@
                 <?php foreach ($actors as $actor) : ?>
                     <div class="actor--content__list__item">
                         <div class="actor--content__left">
-                            <img src="<?= $actor->getPicture() ?>" alt="<?= $actor->getName() ?>">
+                            <img src="/<?= $actor->getPicture() ?>" alt="<?= $actor->getName() ?>">
                         </div>
                         <div class="actor--content__right">
                             <h2 class="actor--content__list__item__name"><?= $actor->getName() ?></h2>

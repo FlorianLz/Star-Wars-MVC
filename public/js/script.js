@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Delete film with ID: ' + filmId);
                 fetch('/admin/films/delete/' + filmId, {method: 'GET'})
                 .then(response => {
+                    console.log(response);
                     document.querySelector('div.movie-card[data-id="' + filmId + '"]').remove();
                     deleteModal.style.display = 'none';
                 })

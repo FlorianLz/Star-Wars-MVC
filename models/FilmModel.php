@@ -173,7 +173,7 @@ class FilmModel extends SQL
             "id" => $id
         ));
         //delete all comments
-        $query = "DELETE FROM comments WHERE id_film = :id";
+        $query = "DELETE FROM films_comments WHERE id_film = :id";
         $stmt = SQL::getPdo()->prepare($query);
         $stmt->execute(array(
             "id" => $id
