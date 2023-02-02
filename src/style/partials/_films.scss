@@ -60,7 +60,7 @@
 }
 
 .movie-list {
-  @include flex(row, flex-start, flex-start, wrap);
+  @include flex(row, flex-start, stretch, wrap);
   column-gap: 20px;
 
   .movie-card {
@@ -73,6 +73,7 @@
 
     .cover {
       width: 100%;
+      max-height: 300px;
     }
 
     .title {
