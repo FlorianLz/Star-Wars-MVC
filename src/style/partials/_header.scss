@@ -52,6 +52,12 @@
   top: 0;
   left: 0;
   padding-top: 55px;
+  @media (max-width: 767px) {
+    width: 100%;
+    height: max-content;
+    position: relative;
+    padding-top: 55px;
+  }
 
   .header {
     padding: 10px;

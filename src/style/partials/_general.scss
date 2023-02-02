@@ -42,6 +42,10 @@ img {
   width: calc(100% - 200px);
   margin-left: 200px;
   padding: 55px 30px 30px;
+    @media (max-width: 767px) {
+        width: 100%;
+        margin-left: 0;
+    }
 }
 
 .generic-cta {
