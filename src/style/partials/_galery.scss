@@ -12,14 +12,13 @@
   }
 
   &--list {
-    @include flex(row, center, strech, wrap);
+    @include flex(row, center, stretch, wrap);
     gap: 20px;
     margin-top: 20px;
   }
 
   &--item {
-    width: clamp(300px, 30%, 400px);
-    height: auto;
+    max-width: 400px;
     object-fit: cover;
     @media (max-width: 991px) {
       width: clamp(200px, 50%, 300px);
@@ -29,7 +28,8 @@
     }
 
     img{
-      height: 100%;
+      height: 80%;
+      width: 100%;
     }
   }
 
