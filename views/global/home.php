@@ -7,7 +7,7 @@
     ["texte" => '"La peur est le chemin vers le côté obscur : la peur mène à la colère, la colère mène à la haine, la haine mène à la souffrance."'],
     ["texte" => '"Le jour où nous cessons de croire que la démocratie fonctionne est le jour où nous perdons."'],
     ["texte" => '"Je t\'aime." "Je sais."'],
-    ["texte" => "Un Jedi n'utilise pas la violence, il la maîtrise."],
+    ["texte" => '"Un Jedi n\'utilise pas la violence, il la maîtrise."'],
     ["texte" => '"Vous êtes venus dans cette casserole ? Vous êtes plus braves que je ne le pensais."'],
     ["texte" => '"La puissance ne fait pas tout."'],
     ["texte" => '"Que la force soit avec toi."'],

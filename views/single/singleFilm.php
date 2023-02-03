@@ -1,7 +1,7 @@
 <section class="banner">
     <div class="container">
         <div class="banner--content">
-            <h1 class="title"><?= $film->getName() ?></h1>
+            <h1 class="title"><?= strtolower($film->getName()) ?></h1>
             <img class="banner--image" src="/<?= $film->getBanner() ?>" alt="<?= $film->getBanner() ?>">
         </div>
     </div>
