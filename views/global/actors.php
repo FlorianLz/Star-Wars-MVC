@@ -9,8 +9,6 @@
     </section>
 <?php } ?>
 
-<?php var_dump($_SESSION['LOGIN']); ?>
-
 <section class="actor">
     <div class="container">
         <div class="actor--content">
