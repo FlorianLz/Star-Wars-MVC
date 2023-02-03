@@ -14,6 +14,8 @@ framework Laravel sur des bases de développement PHP connu.
 
 ```shell
 php mvc db:migrate
+=> La base de donées avec les infos remplies est disponible directement dans le fichier `migrations/starwarsmvc.sql`
+=> Identifiants : admin@admin.fr / root
 ```
 
 ### Créer un nouveau modèle
