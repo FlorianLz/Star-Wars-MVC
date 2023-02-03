@@ -39,6 +39,9 @@
                                         <input class="generic-cta" type="submit" value="Supprimer">
                                     </form>
                                 </div>
+                                <div class="actor--content__list__item__update">
+                                    <a class="generic-cta" href="/admin/actors/update/<?= $actor->getId() ?>">Modifier</a>
+                                </div>
                             <?php endif; ?>
                         </div>
                     </div>

@@ -19,6 +19,8 @@ class SessionHelpers
     static function login(mixed $equipe): void
     {
         //$_SESSION['LOGIN'] = $equipe;
+        $_SESSION['LOGIN']['prenom'] = $equipe->getPrenom();
+        $_SESSION['LOGIN']['id'] = $equipe->getId();
         if ($equipe->isAdmin()) {
             $_SESSION['LOGIN']['role'] = 'admin';
         } else {

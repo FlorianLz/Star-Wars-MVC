@@ -53,5 +53,5 @@
         <?php } ?>
     </div>
     <input type="hidden" id="nbActors" name="nbActors" value="<?= count($allActorsForFilm) ?>">
-    <input type="submit" value="Update">
+    <input type="submit" value="Mettre à jour" class="generic-cta">
 </form>
